@@ -1,0 +1,41 @@
+* {
+	color: #FBFBFB;
+}
+
+body {
+	color: #FBFBFB;
+	background-color: #171123;
+}
+
+legend {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 700px;
+	height: 50px;
+	left: calc(50% - 350px);
+	background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+	border-radius: 20px;
+}
+
+nav {
+	width: 400px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+Link {
+	color: #FBFBFB;
+	text-decoration: none;
+	text-transform: none;
+}
