@@ -4,10 +4,11 @@ import "../index.css"
 export default function Header() {
     return (
         <header>
-            <legend>Jack.dev</legend>
+            <legend>Aymeric Chassagne</legend>
 
             <nav>
-                <Link to="/">Myself</Link>
+                <Link to="/">Accueil</Link>
+                <Link to="/">Projets</Link>
                 <Link to="/projects">GitHub</Link>
                 <Link to="/contact">Contact</Link>
             </nav>
