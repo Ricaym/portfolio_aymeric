@@ -6,7 +6,7 @@ import Contact from "./pages/Contact";
 
 function App() {
 	return (
-		<>
+		<div>
 			<Header />
 
 			<div style={{ padding: "40px" }}>
@@ -16,7 +16,7 @@ function App() {
 					<Route path="/contact" element={<Contact />} />
 				</Routes>
 			</div>
-		</>
+		</div>
 	);
 }
 

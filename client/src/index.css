@@ -1,10 +1,12 @@
 * {
 	color: #FBFBFB;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
 	color: #FBFBFB;
-	background-color: #171123;
+	background-image: url(../src/assets/background.jpg);
+	background-size: 100%;
 }
 
 legend {
@@ -14,12 +16,13 @@ legend {
 
 header {
 	display: flex;
+	position: relative;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-	width: 700px;
+	width: 600px;
 	height: 50px;
-	left: calc(50% - 350px);
+	left: calc(50% - 300px);
 	background: rgba(255, 255, 255, 0.15);
 	backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
 	border: 1px solid rgba(255, 255, 255, 0.3);
@@ -28,14 +31,20 @@ header {
 }
 
 nav {
-	width: 400px;
+	width: 250px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
 
 Link {
-	color: #FBFBFB;
+	color: black;
+}
+
+a {
 	text-decoration: none;
-	text-transform: none;
+}
+
+a:hover {
+	color: black;
 }
