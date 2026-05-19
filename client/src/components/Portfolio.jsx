@@ -10,6 +10,10 @@ export default function Portfolio() {
 					<p>Développeur Web App.</p>
 				</div>
 			</div>
+			<div className="profilePicture_phone">
+				<p className="phone">Aymeric Chassagne</p>
+				<p className="phone">Développeur Web App.</p>
+			</div>
 		</div>
 	);
 }
