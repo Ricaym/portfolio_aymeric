@@ -2,12 +2,12 @@ import "../index.css"
 
 export default function Portfolio() {
 	return (
-		<div>
+		<div className="page">
 			<header>
 				<legend>Aymeric Chassagne</legend>
 			</header>
 			<div className="myselfCard">
-				<img className="profilePicture" src="../../public/profile_picture.png" />
+				<div className="profilePicture"></div>
 				<legend>Aymeric Chassagne</legend>
 				<p>Développeur Web App.</p>
 			</div>

@@ -1,1 +1,1 @@
-Visit my portfolio : https://ricaym.github.io/portfolio_aymeric/
+You can visit my portfolio : https://ricaym.github.io/portfolio_aymeric/
