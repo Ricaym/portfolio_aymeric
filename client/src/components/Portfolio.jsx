@@ -3,13 +3,12 @@ import "../index.css"
 export default function Portfolio() {
 	return (
 		<div className="page">
-			<header>
-				<legend>Aymeric Chassagne</legend>
-			</header>
+			<legend>Aymeric Chassagne</legend>
 			<div className="myselfCard">
-				<div className="profilePicture"></div>
-				<legend>Aymeric Chassagne</legend>
-				<p>Développeur Web App.</p>
+				<div className="profilePicture">
+					<p>Aymeric Chassagne</p>
+					<p>Développeur Web App.</p>
+				</div>
 			</div>
 		</div>
 	);
