@@ -4,7 +4,7 @@
 }
 
 body {
-	background-image: url('./assets/background.jpg');
+	background-image: url('./assets/CharacterSelection.jpg');
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: center;
@@ -156,8 +156,7 @@ legend {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-image: url("./assets/CharacterSelection.jpg");
-	background-size: 107%;
+	backdrop-filter: blur(5px);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -167,8 +166,8 @@ legend {
 .Companion {
 	display: flex;
 	position: absolute;
-	width: 50%;
-	height: 80%;
+	width: 40%;
+	height: 50%;
 	left: 0;
 }
 
