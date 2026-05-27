@@ -164,6 +164,21 @@ legend {
 	align-items: end;
 }
 
+.Companion {
+	display: flex;
+	position: absolute;
+	width: 50%;
+	height: 80%;
+	left: 0;
+}
+
+Canvas {
+	position: flex;
+	left: 0;
+	width: 50%;
+	height: 100%;
+}
+
 .CharactersClass {
 	width: 50%;
 	display: flex;
@@ -173,7 +188,7 @@ legend {
 }
 
 .CharacterName {
-	position: relative;
+	position: flex;
 	top: 0;
 }
 

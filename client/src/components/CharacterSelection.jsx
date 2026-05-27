@@ -1,6 +1,5 @@
 import hunter from "../assets/logo_portfolio.png";
-import titan from "../assets/logo_portfolio.png";
-import warlock from "../assets/logo_portfolio.png";
+import Companion from "./Companion";
 
 export default function CharacterSelection({ onSelect }) {
 	const characters = [
@@ -10,16 +9,17 @@ export default function CharacterSelection({ onSelect }) {
 		},
 		{
 			name: "Aymeric Chassagne",
-			image: titan,
+			image: hunter,
 		},
 		{
 			name: "Aymeric Chassagne",
-			image: warlock,
+			image: hunter,
 		},
 	];
 
 	return (
 		<div className="CharactersSelection">
+			<Companion/>
 			<div className="CharactersClass">
 				{characters.map((character) => (
 					<div key={character.name} className="CharacterCard" onClick={() => onSelect(character)}>

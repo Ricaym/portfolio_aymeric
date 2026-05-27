@@ -3,6 +3,7 @@ import StartScreen from "./components/StartScreen";
 import CharacterSelection from "./components/CharacterSelection";
 import Portfolio from "./components/Portfolio";
 
+
 function App() {
 	const [step, setStep] = useState("start");
 	const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -25,9 +26,7 @@ function App() {
 			)}
 
 			{step === "selection" && (
-				<CharacterSelection
-					onSelect={handleCharacterSelect}
-				/>
+				<CharacterSelection onSelect={handleCharacterSelect}/>
 			)}
 
 			{step === "portfolio" && (
