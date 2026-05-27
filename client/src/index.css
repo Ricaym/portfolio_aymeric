@@ -164,16 +164,17 @@ legend {
 	align-items: end;
 }
 
-.CharacterName {
-	position: absolute;
-}
-
 .CharactersClass {
 	width: 50%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 40px;
+}
+
+.CharacterName {
+	position: relative;
+	top: 0;
 }
 
 .CharacterCard {
