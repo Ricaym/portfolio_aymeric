@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 function Model() {
 
     const group = useRef();
-	const gltf = useGLTF("/portfolio_aymeric/companion-personal.glb");
+	const gltf = useGLTF("/portfolio_aymeric/companion.v2.0.0.glb");
     
     const { actions } = useAnimations(gltf.animations, group);
 
@@ -22,7 +22,7 @@ function Model() {
 		<primitive
             ref={group}
 			object={gltf.scene}
-			scale={2.5}
+			scale={4}
 			position={[0, 0, 0]}
             rotation={[0, 5, 0.5]}
 		/>
