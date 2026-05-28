@@ -1,0 +1,20 @@
+export function GamepadCursor({ x, y }) {
+	return (
+		<div
+			style={{
+				position: "fixed",
+				left: x,
+				top: y,
+				width: 60,
+				height: 60,
+				borderRadius: "50%",
+				border: "3px solid rgba(255, 255, 255, 0.2)",
+				boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+				backdropFilter: "blur(1px)",
+				transform: "translate(-51%, -51%)",
+				pointerEvents: "none",
+				zIndex: 9999,
+			}}
+		/>
+	);
+}
