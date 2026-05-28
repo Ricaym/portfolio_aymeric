@@ -1,30 +1,31 @@
-import hunter from "../assets/logo_portfolio.png";
+
 import Companion from "./Companion";
+import Cursor from "../../hooks/Cursor";
 
 export default function CharacterSelection({ onSelect }) {
 	const characters = [
 		{
 			name: "Aymeric Chassagne",
-			image: hunter,
+			// image: hunter,
 		},
 		{
 			name: "Aymeric Chassagne",
-			image: hunter,
+			// image: hunter,
 		},
 		{
 			name: "Aymeric Chassagne",
-			image: hunter,
+			// image: hunter,
 		},
 	];
 
 	return (
-		<div className="CharactersSelection">
+		<div className="CharactersSelection"><Cursor/>
 			<Companion/>
 			<div className="CharactersClass">
 				{characters.map((character) => (
 					<div key={character.name} className="CharacterCard" onClick={() => onSelect(character)}>
-						<img src={character.image} alt={character.name}/>
 						<p className="CharacterName">{character.name}</p>
+						<img className="CharacterImage" src={character.image}/>
 					</div>
 				))}
 			</div>
