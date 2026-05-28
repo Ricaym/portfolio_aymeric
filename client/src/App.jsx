@@ -105,9 +105,7 @@ function App() {
 
 			{/* SELECTION */}
 			{step === "selection" && (
-				<CharacterSelection
-					onSelect={handleCharacterSelect}
-				/>
+				<CharacterSelection onSelect={handleCharacterSelect} />
 			)}
 
 			{/* PORTFOLIO */}

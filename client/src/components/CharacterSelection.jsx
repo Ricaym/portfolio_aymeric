@@ -1,6 +1,5 @@
 
 import Companion from "./Companion";
-import Cursor from "../../hooks/Cursor";
 
 export default function CharacterSelection({ onSelect }) {
 	const characters = [
@@ -19,7 +18,7 @@ export default function CharacterSelection({ onSelect }) {
 	];
 
 	return (
-		<div className="CharactersSelection"><Cursor/>
+		<div className="CharactersSelection">
 			<Companion/>
 			<div className="CharactersClass">
 				{characters.map((character) => (
