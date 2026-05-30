@@ -1,11 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import {
-	OrbitControls,
-	useGLTF,
-	useAnimations,
-	// Environment,
-	ContactShadows,
-} from "@react-three/drei";
+import {OrbitControls, useGLTF, useAnimations, /* ContactShadows */} from "@react-three/drei";
 
 import { useEffect, useRef } from "react";
 
@@ -87,16 +81,14 @@ export default function Companion() {
 					intensity={1}
 				/>
 
-				{/* <Environment preset="studio" /> */}
-
 				{/* Ombres propres */}
-				<ContactShadows
+				{/* <ContactShadows
 					position={[0, -4, 0]}
 					opacity={0.5}
 					scale={20}
 					blur={2.5}
 					far={10}
-				/>
+				/> */}
 
 				<Model />
 
