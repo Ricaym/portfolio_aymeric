@@ -7,10 +7,7 @@ export default function Portfolio() {
 			<legend>Aymeric Chassagne</legend>
 
 			<div className="myselfCard">
-				<div className="profilePicture">
-					<p className="name_card">Aymeric Chassagne</p>
-					<p className="title_card">Web App Developer</p>
-				</div>
+				<div className="profilePicture"></div>
 				<div className="description">
 					<p className="description_paragraph">
 						Hello, my name is Aymeric Chasssagne.<br/><br/>
@@ -18,11 +15,6 @@ export default function Portfolio() {
 					</p>
 				</div>
 			</div>
-
-			{/* <div className="profilePicture_phone">
-				<p className="phone">Aymeric Chassagne</p>
-				<p className="phone">Développeur Web App.</p>
-			</div> */}
 		</div>
 	);
 }
