@@ -1,19 +1,22 @@
-
 import Companion from "./Companion";
+
+import First from "/public/1.jpg";
+import Second from "/public/2.jpg";
+import Third from "/public/3.jpg";
 
 export default function CharacterSelection({ onSelect }) {
 	const characters = [
 		{
-			name: "Aymeric Chassagne",
-			// image: hunter,
+			name: "Myself",
+			image: First,
 		},
 		{
-			name: "Aymeric Chassagne",
-			// image: hunter,
+			name: "Projects",
+			image: Second,
 		},
 		{
-			name: "Aymeric Chassagne",
-			// image: hunter,
+			name: "Contacts",
+			image: Third,
 		},
 	];
 
