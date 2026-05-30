@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import StartScreen from "./components/StartScreen";
 import CharacterSelection from "./components/CharacterSelection";
 import Portfolio from "./components/Portfolio";
@@ -6,18 +6,48 @@ import LoadingScreen from "./components/LoadingScreen";
 import { useGamepadNavigation } from "../hooks/useGamepadNavigation";
 import { GamepadCursor } from "../hooks/GamepadCursor";
 import Cursor from "../hooks/Cursor";
-import { div } from "three/src/nodes/math/OperatorNode.js";
 
 function App() {
-	const [step, setStep] = useState("modeSelect");
+	// Détection mobile portrait
+	const [isMobilePortrait, setIsMobilePortrait] = useState(
+		window.innerHeight > window.innerWidth
+	);
 
-	// souris par défaut
+	// Si téléphone portrait → StartScreen
+	// Sinon → choix du mode
+	const [step, setStep] = useState(
+		window.innerHeight > window.innerWidth
+			? "start"
+			: "modeSelect"
+	);
+
 	const [controlMode, setControlMode] = useState("mouse");
-
-	const [selectedCharacter, setSelectedCharacter] = useState(null);
+	const [selectedCharacter, setSelectedCharacter] =
+		useState(null);
 	const [nextStep, setNextStep] = useState(null);
 
-	// Active uniquement en mode gamepad
+	useEffect(() => {
+		const handleResize = () => {
+			const portrait =
+				window.innerHeight > window.innerWidth;
+
+			setIsMobilePortrait(portrait);
+
+			// Si on arrive sur mobile portrait depuis le modeSelect
+			if (portrait && step === "modeSelect") {
+				setStep("start");
+			}
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		return () =>
+			window.removeEventListener(
+				"resize",
+				handleResize
+			);
+	}, [step]);
+
 	const { cursor } = useGamepadNavigation(
 		controlMode === "gamepad"
 	);
@@ -31,11 +61,9 @@ function App() {
 		}, 2000);
 	};
 
-	// Sélection du mode
 	const handleSelectMode = (mode) => {
 		setControlMode(mode);
 
-		// Cache la souris native en mode manette
 		if (mode === "gamepad") {
 			document.body.style.cursor = "none";
 		} else {
@@ -56,59 +84,62 @@ function App() {
 
 	return (
 		<>
-			{/* Curseur souris par défaut */}
-			{controlMode === "mouse" && <Cursor />}
+			{/* Curseur souris uniquement hors mode gamepad */}
+			{controlMode === "mouse" && !isMobilePortrait && <Cursor />}
 
-			{/* Curseur manette uniquement en mode gamepad */}
+			{/* Curseur manette */}
 			{controlMode === "gamepad" && (
 				<GamepadCursor x={cursor.x} y={cursor.y} />
 			)}
 
-			{/* CHOIX DU MODE */}
-			{step === "modeSelect" && (
-				<div className="Screen">
-					<div className="SelectMode">
-						<p className="SelectModeTitle">
-							Choisis ton mode
-						</p>
+			{/* Choix du mode uniquement sur desktop/paysage */}
+			{!isMobilePortrait &&
+				step === "modeSelect" && (
+					<div className="Screen">
+						<div className="SelectMode">
+							<p className="SelectModeTitle">
+								Choisis ton mode
+							</p>
 
-						<div className="SelectModeButtons">
-							<button
-								onClick={() =>
-									handleSelectMode("mouse")
-								}
-							>
-								Mode Souris
-							</button>
+							<div className="SelectModeButtons">
+								<button
+									onClick={() =>
+										handleSelectMode(
+											"mouse"
+										)
+									}
+								>
+									Mode Souris
+								</button>
 
-							<button
-								onClick={() =>
-									handleSelectMode("gamepad")
-								}
-							>
-								Mode Controller
-							</button>
+								<button
+									onClick={() =>
+										handleSelectMode(
+											"gamepad"
+										)
+									}
+								>
+									Mode Controller
+								</button>
+							</div>
 						</div>
 					</div>
-				</div>
-			)}
+				)}
 
-			{/* LOADING */}
 			{step === "loading" && (
 				<LoadingScreen nextStep={nextStep} />
 			)}
 
-			{/* START */}
 			{step === "start" && (
 				<StartScreen onStart={handleStart} />
 			)}
 
-			{/* SELECTION */}
 			{step === "selection" && (
-				<CharacterSelection onSelect={handleCharacterSelect} />
+				<CharacterSelection
+					onSelect={handleCharacterSelect}
+				/>
 			)}
 
-			{/* PORTFOLIO */}
 			{step === "portfolio" && (
 				<Portfolio character={selectedCharacter} />
 			)}

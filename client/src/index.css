@@ -77,9 +77,7 @@ body {
 	border: 1px solid black;
 }
 
-/* LoadingScreen **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* LoadingScreen */
 
 .LoadingScreen {
 	position: fixed;
@@ -583,9 +581,7 @@ animation: moveBox-8 4s infinite;
 animation: moveBox-9 4s infinite;
 }
 
-/* LoadingScreen **//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* LoadingScreen */
 
 .page {
 	display: flex;
@@ -672,9 +668,7 @@ to {
 }
 }
 
-/* StartScreen //**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* StartScreen */
 
 * {
 	margin: 0;
@@ -723,9 +717,7 @@ to {
 	100% {opacity: 0;}
 }
 
-/* CharacterSelection *//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* CharacterSelection */
 
 .CharactersSelection {
 	position: fixed;
@@ -800,33 +792,204 @@ Canvas {
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
 @media screen and (orientation: portrait) {
-	body {
-		background-image: url('./assets/StartScreen.jpg');
-		background-attachment: fixed;
-		background-size: cover;
-		background-position: center;
+
+	/* StartScreen */
+
+	.StartScreen {
+		position: fixed;
+		width: 100%;
+		height: 100%;
 	}
 
-	
-
-	.myselfCard {
-		display: none;
+	.overlay {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 
-	.profilePicture_phone {
+	.logoStartScreen {
+		position: absolute;
+		top: calc(50% - 250px);
+		width: 200px;
+		height: 200px;
+	}
+
+	.title {
+		font-size: 40px;
+	}
+
+	.subtitle {
+		bottom: 40px;
+		position: fixed;
+		color: white;
+		font-size: 35px;
+		opacity: 1;
+		animation: blink 2s infinite;
+	}
+
+	@keyframes blink {
+		0% {opacity: 0;}
+		50% {opacity: 1;}
+		100% {opacity: 0;}
+	}
+
+	/* CharacterSelection */
+
+	.CharactersSelection {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: end;
+	}
+
+	.CharacterCard {
+		display: flex;
+		position: relative;
+		z-index: 5;
+		width: 500px;
+		height: 100px;
+		transition: 0.3s;
+		box-shadow: 0 0 30px rgba(0,0,0,0.4);
+	}
+
+	.CharacterName {
+		z-index: 2;
+		display: flex;
+		position: relative;
+		align-self: center;
+		font-size: 35px;
+		padding: 0 10px;
+		left: 120px;
+	}
+
+	.CharacterImage {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	/* Companion */
+
+	.Companion {
+		z-index: -1;
+		display: flex;
+		position: fixed;
+		width: 150%;
+		height: 100%;
+	}
+
+	Canvas {
+		position: flex;
+		left: 0;
+		width: 50%;
+		height: 100%;
+	}
+
+	.CharactersClass {
+		width: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 40px;
+		margin-right: 200px;
+	}
+
+	.CharacterCard:hover {
+		transform: scale(1.05);
+		
+		border: 1px solid white;
+	}
+
+	/* Portfolio */
+
+	.page {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+	}
+
+	legend {
+		margin: 10px 0;
 		width: 300px;
-		height: 500px;
-		align-self: left;
-		background-image: url(./assets/StartScreen.jpg.png);
-		background-size: 100%;
-		background-repeat: no-repeat;
-		backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+		height: 50px;
+		font-size: 25px;
+		display: flex;
+		position: relative;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 255, 255, 0.15);
+		backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
 		border: 1px solid rgba(255, 255, 255, 0.3);
 		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 		border-radius: 20px;
 	}
 
-	.phone {
+	.myselfCard {
 		display: flex;
+		flex-direction: row;
+		align-items: center;
+		width: 90%;
+		height: 600px;
+	}
+
+	.name_card {
+		font-size: 25px;
+		font-weight: bold;
+		margin: 0;
+		padding: 10px 20px;
+	}
+
+	.title_card {
+		font-size: 20px;
+		margin: 0;
+		padding: 0px 20px;
+	}
+
+	.profilePicture {
+		width: calc(20% - 17px);
+		height: 500px;
+		align-self: left;
+		background-image: url(./assets/profile_picture.png);
+		background-repeat: no-repeat;
+		background-size: 100%;
+		backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+		border-radius: 20px;
+		margin-left: 10px;
+	}
+
+	.description {
+		display: flex;
+		align-items: center;
+		width: calc(80% - 17px);
+		height: 500px;
+		backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+		border-radius: 20px;
+		margin-left: 10px;
+	}
+
+	.description p {
+		padding: 20px;
+	}
+
+	.phone {
+		display: none;
+	}
+
+	@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
 	}
 }
