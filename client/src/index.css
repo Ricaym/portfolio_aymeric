@@ -31,8 +31,7 @@ body {
 	display: flex;
 	width: 60px;
 	height: 60px;
-	border: 3px solid rgba(255, 255, 255, 0.2);
-	backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px);
+	border: 3px solid rgba(255, 255, 255, 0.5);
 	border-radius: 50%;
 	position: fixed;
 	pointer-events: none;
@@ -739,6 +738,17 @@ to {
 	box-shadow: 0 0 30px rgba(0,0,0,0.4);
 }
 
+.CharacterCard:hover {
+	transform: scale(1.05);
+	border: 1px solid white;
+}
+
+.CharacterCard:hover,
+.CharacterCard.gamepad-hover {
+	transform: scale(1.05);
+	border: 1px solid white;
+}
+
 .CharacterName {
 	z-index: 2;
 	display: flex;
@@ -781,11 +791,7 @@ Canvas {
 	margin-right: 200px;
 }
 
-.CharacterCard:hover {
-	transform: scale(1.05);
-	
-	border: 1px solid white;
-}
+
 
 /* Paramètrages téléphone *//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
@@ -795,6 +801,13 @@ Canvas {
 
 	* {
 		cursor: default;
+	}
+
+	.SelectModeButtons button:hover,
+	.SelectModeButtons button.gamepad-hover {
+		transform: scale(1.1);
+		background: white;
+		color: black;
 	}
 
 	/* From Uiverse.io by Nawsome */ 

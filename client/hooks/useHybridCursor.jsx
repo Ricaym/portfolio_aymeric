@@ -1,60 +1,80 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useHybridCursor() {
-  const cursor = useRef({
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
-  });
+	const cursor = useRef({
+		x: window.innerWidth / 2,
+		y: window.innerHeight / 2,
+	});
 
-  const [renderCursor, setRenderCursor] = useState(cursor.current);
+	const [renderCursor, setRenderCursor] = useState(cursor.current);
+	const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    let frame;
+	useEffect(() => {
+		let frame;
 
-    const deadZone = 0.15;
-    const speed = 10;
+		const deadZone = 0.15;
+		const speed = 10;
 
-    // --- MOUSE CONTROL (absolu)
-    const onMouseMove = (e) => {
-      cursor.current.x = e.clientX;
-      cursor.current.y = e.clientY;
-      setRenderCursor({ ...cursor.current });
-    };
+		const onMouseMove = (e) => {
+			cursor.current.x = e.clientX;
+			cursor.current.y = e.clientY;
 
-    window.addEventListener("mousemove", onMouseMove);
+			setVisible(true);
+			setRenderCursor({ ...cursor.current });
+		};
 
-    const loop = () => {
-      const pads = navigator.getGamepads();
-      const pad = pads[0];
+		const hideMouseCursor = () => {
+			setVisible(false);
+		};
 
-      if (pad) {
-        let x = pad.axes[0];
-        let y = pad.axes[1];
+		window.addEventListener("mousemove", onMouseMove);
+		window.addEventListener("mouseleave", hideMouseCursor);
+		document.addEventListener("mouseleave", hideMouseCursor);
 
-        if (Math.abs(x) < deadZone) x = 0;
-        if (Math.abs(y) < deadZone) y = 0;
+		const loop = () => {
+			const pads = navigator.getGamepads?.() || [];
+			const pad = pads[0];
 
-        // --- GAMEPAD CONTROL (relatif)
-        cursor.current.x += x * speed;
-        cursor.current.y += y * speed;
+			if (pad) {
+				let x = pad.axes[0] || 0;
+				let y = pad.axes[1] || 0;
 
-        // clamp écran
-        cursor.current.x = Math.max(0, Math.min(window.innerWidth, cursor.current.x));
-        cursor.current.y = Math.max(0, Math.min(window.innerHeight, cursor.current.y));
+				if (Math.abs(x) < deadZone) x = 0;
+				if (Math.abs(y) < deadZone) y = 0;
 
-        setRenderCursor({ ...cursor.current });
-      }
+				const isMoving = x !== 0 || y !== 0;
 
-      frame = requestAnimationFrame(loop);
-    };
+				if (isMoving) {
+					cursor.current.x += x * speed;
+					cursor.current.y += y * speed;
 
-    loop();
+					cursor.current.x = Math.max(
+						0,
+						Math.min(window.innerWidth, cursor.current.x)
+					);
 
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("mousemove", onMouseMove);
-    };
-  }, []);
+					cursor.current.y = Math.max(
+						0,
+						Math.min(window.innerHeight, cursor.current.y)
+					);
 
-  return { cursor: renderCursor };
+					setVisible(true);
+					setRenderCursor({ ...cursor.current });
+				}
+			}
+
+			frame = requestAnimationFrame(loop);
+		};
+
+		loop();
+
+		return () => {
+			cancelAnimationFrame(frame);
+			window.removeEventListener("mousemove", onMouseMove);
+			window.removeEventListener("mouseleave", hideMouseCursor);
+			document.removeEventListener("mouseleave", hideMouseCursor);
+		};
+	}, []);
+
+	return { cursor: renderCursor, visible };
 }

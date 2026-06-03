@@ -48,6 +48,15 @@ function App() {
 			);
 	}, [step]);
 
+	useEffect(() => {
+		document.body.style.cursor =
+			controlMode === "gamepad" ? "none" : "default";
+
+		return () => {
+			document.body.style.cursor = "default";
+		};
+	}, [controlMode]);
+
 	const { cursor } = useGamepadNavigation(
 		controlMode === "gamepad"
 	);
@@ -62,16 +71,9 @@ function App() {
 	};
 
 	const handleSelectMode = (mode) => {
-		setControlMode(mode);
-
-		if (mode === "gamepad") {
-			document.body.style.cursor = "none";
-		} else {
-			document.body.style.cursor = "default";
-		}
-
-		showLoadingThen("start");
-	};
+	setControlMode(mode);
+	showLoadingThen("start");
+};
 
 	const handleStart = () => {
 		showLoadingThen("selection");
@@ -89,7 +91,7 @@ function App() {
 
 			{/* Curseur manette */}
 			{controlMode === "gamepad" && (
-				<GamepadCursor x={cursor.x} y={cursor.y} />
+				<GamepadCursor x={cursor.x} y={cursor.y} visible={true} />
 			)}
 
 			{/* Choix du mode uniquement sur desktop/paysage */}

@@ -8,7 +8,7 @@ export function GamepadCursor({ x, y }) {
 				width: 60,
 				height: 60,
 				borderRadius: "50%",
-				border: "3px solid rgba(255, 255, 255, 0.2)",
+				border: "3px solid rgba(255, 255, 255, 0.5)",
 				backdropFilter: "blur(1px)",
 				transform: "translate(-51%, -51%)",
 				pointerEvents: "none",

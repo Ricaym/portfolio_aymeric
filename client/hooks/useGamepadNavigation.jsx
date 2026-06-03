@@ -1,78 +1,115 @@
 import { useEffect, useRef, useState } from "react";
 
-export function useGamepadNavigation() {
-  const cursorRef = useRef({
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
-  });
+export function useGamepadNavigation(enabled = true) {
+	const cursorRef = useRef({
+		x: window.innerWidth / 2,
+		y: window.innerHeight / 2,
+	});
 
-  const [cursor, setCursor] = useState(cursorRef.current);
-  const [pressed, setPressed] = useState({});
+	const hoveredElementRef = useRef(null);
 
-  useEffect(() => {
-    let frame;
+	const [cursor, setCursor] = useState(cursorRef.current);
+	const [pressed, setPressed] = useState({});
 
-    const deadZone = 0.05;
-    const speed = 12;
+	useEffect(() => {
+		let frame;
 
-    let prevA = false;
+		const deadZone = 0.05;
+		const speed = 12;
 
-    const loop = () => {
-      const pads = navigator.getGamepads();
-      const pad = pads[0];
+		let prevA = false;
+		let prevY = false;
 
-      if (pad) {
-        // --- STICK GAUCHE
-        let x = pad.axes[0];
-        let y = pad.axes[1];
+		const loop = () => {
+			const pads = navigator.getGamepads();
+			const pad = pads[0];
 
-        if (Math.abs(x) < deadZone) x = 0;
-        if (Math.abs(y) < deadZone) y = 0;
+			if (pad) {
+				let x = pad.axes[0];
+				let y = pad.axes[1];
 
-        cursorRef.current.x += x * speed;
-        cursorRef.current.y += y * speed;
+				if (Math.abs(x) < deadZone) x = 0;
+				if (Math.abs(y) < deadZone) y = 0;
 
-        cursorRef.current.x = Math.max(
-          0,
-          Math.min(window.innerWidth, cursorRef.current.x)
-        );
-        cursorRef.current.y = Math.max(
-          0,
-          Math.min(window.innerHeight, cursorRef.current.y)
-        );
+				cursorRef.current.x += x * speed;
+				cursorRef.current.y += y * speed;
 
-        setCursor({ ...cursorRef.current });
+				cursorRef.current.x = Math.max(
+					0,
+					Math.min(window.innerWidth, cursorRef.current.x)
+				);
 
-        // --- BUTTONS
-        const aPressed = pad.buttons[0].pressed;
+				cursorRef.current.y = Math.max(
+					0,
+					Math.min(window.innerHeight, cursorRef.current.y)
+				);
 
-        setPressed({
-          a: aPressed,
-          b: pad.buttons[1].pressed,
-          x: pad.buttons[2].pressed,
-          y: pad.buttons[3].pressed,
-        });
+				setCursor({ ...cursorRef.current });
 
-        // --- CLICK A
-        if (aPressed && !prevA) {
-          const el = document.elementFromPoint(
-            cursorRef.current.x,
-            cursorRef.current.y
-          );
+				const elementUnderCursor = document.elementFromPoint(
+					cursorRef.current.x,
+					cursorRef.current.y
+				);
 
-          if (el) el.click();
-        }
+				const hoveredElement = elementUnderCursor?.closest(
+					"button, div, a, [data-gamepad-hover]"
+				);
 
-        prevA = aPressed;
-      }
+				if (hoveredElementRef.current !== hoveredElement) {
+					if (hoveredElementRef.current) {
+						hoveredElementRef.current.classList.remove(
+							"gamepad-hover"
+						);
+					}
 
-      frame = requestAnimationFrame(loop);
-    };
+					if (hoveredElement) {
+						hoveredElement.classList.add("gamepad-hover");
+					}
 
-    loop();
+					hoveredElementRef.current = hoveredElement;
+				}
 
-    return () => cancelAnimationFrame(frame);
-  }, []);
+				const aPressed = pad.buttons[0]?.pressed || false;
+				const yPressed = pad.buttons[3]?.pressed || false;
 
-  return { cursor, pressed };
+				setPressed({
+					a: aPressed,
+					b: pad.buttons[1]?.pressed || false,
+					x: pad.buttons[2]?.pressed || false,
+					y: yPressed,
+				});
+
+				if (aPressed && !prevA) {
+					const el = document.elementFromPoint(
+						cursorRef.current.x,
+						cursorRef.current.y
+					);
+
+					if (el) el.click();
+				}
+
+				if (yPressed && !prevY) {
+					window.location.reload();
+				}
+
+				prevA = aPressed;
+				prevY = yPressed;
+			}
+
+			frame = requestAnimationFrame(loop);
+		};
+
+		loop();
+
+		return () => {
+			cancelAnimationFrame(frame);
+
+			if (hoveredElementRef.current) {
+				hoveredElementRef.current.classList.remove("gamepad-hover");
+				hoveredElementRef.current = null;
+			}
+		};
+	}, []);
+
+	return { cursor, pressed };
 }
