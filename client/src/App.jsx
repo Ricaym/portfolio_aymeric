@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Gamemode from "./components/Gamemode";
 import StartScreen from "./components/StartScreen";
 import CharacterSelection from "./components/CharacterSelection";
 import Portfolio from "./components/Portfolio";
@@ -95,38 +96,9 @@ function App() {
 			)}
 
 			{/* Choix du mode uniquement sur desktop/paysage */}
-			{!isMobilePortrait &&
-				step === "modeSelect" && (
-					<div className="Screen">
-						<div className="SelectMode">
-							<p className="SelectModeTitle">
-								Choisis ton mode
-							</p>
-
-							<div className="SelectModeButtons">
-								<button
-									onClick={() =>
-										handleSelectMode(
-											"mouse"
-										)
-									}
-								>
-									Mode Souris
-								</button>
-
-								<button
-									onClick={() =>
-										handleSelectMode(
-											"gamepad"
-										)
-									}
-								>
-									Mode Controller
-								</button>
-							</div>
-						</div>
-					</div>
-				)}
+			{!isMobilePortrait && step === "modeSelect" && (
+				<Gamemode onSelectMode={handleSelectMode} />
+			)}
 
 			{step === "loading" && (
 				<LoadingScreen nextStep={nextStep} />
