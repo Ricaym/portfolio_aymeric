@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 function Model() {
 	const group = useRef();
 
-	const gltf = useGLTF("/portfolio_aymeric/companion.v2.0.7.glb");
+	const gltf = useGLTF("/portfolio_aymeric/companion.v3.0.1.glb");
 
 	const { actions } = useAnimations(gltf.animations, group);
 
