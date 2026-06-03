@@ -4,7 +4,7 @@ export default function Portfolio() {
 
 	return (
 		<div className="page">
-			<legend>Aymeric Chassagne</legend>
+			<legend>Mes contacts !</legend>
 
 			<div className="myselfCard">
 				<div className="profilePicture"></div>

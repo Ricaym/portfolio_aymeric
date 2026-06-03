@@ -791,6 +791,24 @@ legend {
 	align-items: end;
 }
 
+.CharactersClass {
+	opacity: 0;
+	transform: translateX(100px);
+	animation: slideInLeft 0.8s ease forwards;
+}
+
+@keyframes slideInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(100px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
 .CharacterCard {
 	display: flex;
 	position: relative;

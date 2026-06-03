@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import Gamemode from "./components/Gamemode";
 import StartScreen from "./components/StartScreen";
 import CharacterSelection from "./components/CharacterSelection";
-import Portfolio from "./components/Portfolio";
+import Myself from "./components/Myself";
+import Projects from "./components/Projects";
+import Contacts from "./components/Contacts";
 import LoadingScreen from "./components/LoadingScreen";
 import { useGamepadNavigation } from "../hooks/useGamepadNavigation";
 import { GamepadCursor } from "../hooks/GamepadCursor";
@@ -82,8 +84,12 @@ function App() {
 
 	const handleCharacterSelect = (character) => {
 		setSelectedCharacter(character);
-		showLoadingThen("portfolio");
+		showLoadingThen(character.destination);
 	};
+
+	{step === "myself" && <Myself character={selectedCharacter} />}
+	{step === "projects" && <Projects character={selectedCharacter} />}
+	{step === "contacts" && <Contacts character={selectedCharacter} />}
 
 	return (
 		<>
@@ -114,9 +120,9 @@ function App() {
 				/>
 			)}
 
-			{step === "portfolio" && (
-				<Portfolio character={selectedCharacter} />
-			)}
+			{step === "myself" && <Myself character={selectedCharacter} />}
+			{step === "projects" && <Projects character={selectedCharacter} />}
+			{step === "contacts" && <Contacts character={selectedCharacter} />}
 		</>
 	);
 }
