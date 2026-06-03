@@ -64,19 +64,38 @@ function App() {
 		controlMode === "gamepad"
 	);
 
-	const showLoadingThen = (destination) => {
+	const [history, setHistory] = useState([]);
+
+	const showLoadingThen = (destination, addToHistory = true) => {
+		if (addToHistory) {
+			setHistory((prev) => [...prev, step]);
+		}
+
 		setNextStep(destination);
 		setStep("loading");
 
 		setTimeout(() => {
 			setStep(destination);
-		}, 2000);
+		}, 0);
+	};
+
+	const goBack = () => {
+		setHistory((prev) => {
+			if (prev.length === 0) return prev;
+
+			const previousStep = prev[prev.length - 1];
+
+			setNextStep(null);
+			setStep(previousStep);
+
+			return prev.slice(0, -1);
+		});
 	};
 
 	const handleSelectMode = (mode) => {
-	setControlMode(mode);
-	showLoadingThen("start");
-};
+		setControlMode(mode);
+		showLoadingThen("start");
+	};
 
 	const handleStart = () => {
 		showLoadingThen("selection");
@@ -86,10 +105,6 @@ function App() {
 		setSelectedCharacter(character);
 		showLoadingThen(character.destination);
 	};
-
-	{step === "myself" && <Myself character={selectedCharacter} />}
-	{step === "projects" && <Projects character={selectedCharacter} />}
-	{step === "contacts" && <Contacts character={selectedCharacter} />}
 
 	return (
 		<>
@@ -120,9 +135,26 @@ function App() {
 				/>
 			)}
 
-			{step === "myself" && <Myself character={selectedCharacter} />}
-			{step === "projects" && <Projects character={selectedCharacter} />}
-			{step === "contacts" && <Contacts character={selectedCharacter} />}
+			{step === "myself" && (
+				<Myself
+					character={selectedCharacter}
+					onBack={goBack}
+				/>
+			)}
+
+			{step === "projects" && (
+				<Projects
+					character={selectedCharacter}
+					onBack={goBack}
+				/>
+			)}
+
+			{step === "contacts" && (
+				<Contacts
+					character={selectedCharacter}
+					onBack={goBack}
+				/>
+			)}
 		</>
 	);
 }
