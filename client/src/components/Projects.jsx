@@ -1,11 +1,11 @@
 import "../index.css";
 import BackButton from './BackButton';
 
-export default function Portfolio() {
+export default function Portfolio({ onBack }) {
 
 	return (
 		<div className="page">
-            <BackButton />
+            <BackButton onBack={onBack} />
 			<legend>Mes projets !</legend>
 
 			<div className="myselfCard">

@@ -1,11 +1,13 @@
 import "../index.css";
 import BackButton from './BackButton';
+import Companion from "./Companion";
 
-export default function Portfolio({onBack}) {
+export default function Portfolio({ onBack }) {
 
 	return (
 		<div className="page">
 			<BackButton onBack={onBack} />
+			<Companion />
 			<legend>A propos de moi !</legend>
 
 			<div className="myselfCard">

@@ -11,8 +11,8 @@ body {
 	background-position: center;
 }
 
-.back-button {
-	z-index: 1000;
+.BackButton {
+	z-index: 3;
 	position: absolute;
 	top: 20px;
 	left: 20px;
@@ -23,7 +23,7 @@ body {
 	font-size: 25px;
 }
 
-.back-button:hover {
+.BackButton:hover {
 	color: black;
 }
 
@@ -52,7 +52,7 @@ body {
 	position: fixed;
 	pointer-events: none;
 	transform: translate(-50%, -50%);
-	z-index: 9999;
+	z-index: 999;
 }
 
 /* SelectMode */
@@ -660,20 +660,14 @@ body {
 }
 
 legend {
-	margin: 10px 0;
+	top: 20px;
 	width: 300px;
 	height: 50px;
-	font-size: 25px;
+	font-size: 45px;
 	display: flex;
 	position: relative;
 	align-items: center;
 	justify-content: center;
-	background: rgba(255, 255, 255, 0.15);
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-	border-radius: 20px;
 }
 
 .myselfCard {

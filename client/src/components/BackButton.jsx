@@ -3,7 +3,7 @@ function BackButton({ onBack }) {
 		<button
 			type="button"
 			onClick={onBack}
-			className="back-button"
+			className="BackButton"
 		>
 			← Retour
 		</button>
