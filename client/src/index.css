@@ -1,12 +1,12 @@
 * {
 	color: white;
 	font-family: 'MaPolicePerso';
-	/* cursor: none; */
+	cursor: none;
 }
 
 html {
 	height: 100%;
-	/* cursor: none; */
+	cursor: none;
 }
 
 body {
@@ -548,7 +548,7 @@ body {
 /* Curseur Hooks */
 
 .Cursor {
-	/* cursor: none; */
+	cursor: none;
 	display: flex;
 	width: 60px;
 	height: 60px;
