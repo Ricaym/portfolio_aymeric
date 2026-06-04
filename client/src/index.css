@@ -1,7 +1,12 @@
 * {
 	color: white;
 	font-family: 'MaPolicePerso';
-	cursor: none;
+	/* cursor: none; */
+}
+
+html {
+	height: 100%;
+	/* cursor: none; */
 }
 
 body {
@@ -11,28 +16,6 @@ body {
 	background-position: center;
 }
 
-.BackButton {
-	z-index: 3;
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	padding: 10px 20px;
-	background: transparent;
-	color: white;
-	border: none;
-	font-size: 25px;
-}
-
-.BackButton:hover {
-	color: black;
-}
-
-.Screen {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-}
-
 /* Police d'écriture */
 
 @font-face {
@@ -40,110 +23,7 @@ body {
 	src: url('./fonts/japan-wave.ttf') format('opentype');
 }
 
-/* Curseur */
-
-.Cursor {
-	cursor: none;
-	display: flex;
-	width: 60px;
-	height: 60px;
-	border: 3px solid rgba(255, 255, 255, 0.5);
-	border-radius: 50%;
-	position: fixed;
-	pointer-events: none;
-	transform: translate(-50%, -50%);
-	z-index: 999;
-}
-
-/* SelectMode */
-
-.SelectModeRules {
-	width: calc(100% - 40px);
-	height: 300px;
-	left: 20px;
-	top: 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	backdrop-filter: blur(5px);	-webkit-backdrop-filter: blur(5px);
-	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-	font-size: 25px;
-	text-align: center;
-}
-
-.SelectMode {
-	width: 500px;
-	height: 200px;
-	left: calc(50% - 250px);
-	top: calc(50% - 100px);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-	backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
-.SelectModeTitle {
-	font-size: 50px;
-}
-
-.SelectModeButtons>button {
-	font-size: 22px;
-	width: 175px;
-	background-color: transparent;
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	margin: 20px;
-	padding: 10px;
-}
-
-.SelectModeButtons>button:hover {
-	color: black;
-	border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.ControllerRules {
-	z-index: 2;
-	position: fixed;
-	top: calc(var(--mouse-y) + 22px);
-	left: calc(var(--mouse-x) + 22px);
-	width: 320px;
-	padding: 16px 20px;
-	opacity: 0;
-	pointer-events: none;
-	backdrop-filter: blur(5px);	-webkit-backdrop-filter: blur(5px);
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	font-size: 15px;
-	line-height: 1.6;
-	text-align: left;
-	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-	transform: scale(0.96);
-	transition:
-		opacity 0.15s ease,
-		transform 0.15s ease;
-}
-
-.Screen:has(.controllerMode:hover) .ControllerRules {
-	opacity: 1;
-	transform: scale(1);
-}
-
-.A {
-	color: greenyellow;
-}
-
-.Y {
-	color: yellow;
-}
-
-.L {
-	color: black;
-}
-
-/* LoadingScreen */
+/* LoadingScreen Component Page (From Uiverse.io by Nawsome) */
 
 .LoadingScreen {
 	position: fixed;
@@ -151,7 +31,6 @@ body {
 	height: 100%;
 }
 
-/* From Uiverse.io by Nawsome */
 .banter-loader {
 	position: absolute;
 	right: 100px;
@@ -648,16 +527,155 @@ body {
 	animation: moveBox-9 4s infinite;
 }
 
-/* LoadingScreen */
+/* BackButton Component */
 
-.page {
+.BackButton {
+	z-index: 3;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	padding: 10px 20px;
+	background: transparent;
+	color: white;
+	border: none;
+	font-size: 25px;
+}
+
+.BackButton:hover {
+	color: black;
+}
+
+/* Curseur Hooks */
+
+.Cursor {
+	/* cursor: none; */
+	display: flex;
+	width: 60px;
+	height: 60px;
+	border: 3px solid rgba(255, 255, 255, 0.5);
+	border-radius: 50%;
+	position: fixed;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+	z-index: 999;
+}
+
+/* Companion Component */
+
+.Companion {
+	z-index: -1;
+	display: flex;
+	position: fixed;
+	width: 140%;
+	height: 100%;
+}
+
+/* SelectMode Component Page */
+
+.Screen {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.SelectModeRules {
+	width: calc(100% - 40px);
+	height: 300px;
+	left: 20px;
+	top: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	backdrop-filter: blur(5px);	-webkit-backdrop-filter: blur(5px);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+	font-size: 25px;
+	text-align: center;
+}
+
+.SelectMode {
+	width: 500px;
+	height: 200px;
+	left: calc(50% - 250px);
+	top: calc(50% - 100px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.SelectModeTitle {
+	font-size: 50px;
+}
+
+.SelectModeButtons>button {
+	font-size: 22px;
+	width: 175px;
+	background-color: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	margin: 20px;
+	padding: 10px;
+}
+
+.SelectModeButtons>button:hover {
+	color: black;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ControllerRules {
+	z-index: 2;
+	position: fixed;
+	top: calc(var(--mouse-y) + 22px);
+	left: calc(var(--mouse-x) + 22px);
+	width: 320px;
+	padding: 16px 20px;
+	opacity: 0;
+	pointer-events: none;
+	backdrop-filter: blur(5px);	-webkit-backdrop-filter: blur(5px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	font-size: 15px;
+	line-height: 1.6;
+	text-align: left;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+	transform: scale(0.96);
+	transition:
+		opacity 0.15s ease,
+		transform 0.15s ease;
+}
+
+.Screen:has(.controllerMode:hover) .ControllerRules {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.A {
+	color: greenyellow;
+}
+
+.Y {
+	color: yellow;
+}
+
+.L {
+	color: black;
+}
+
+
+
+/* Pages */
+
+/* .page {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	gap: 10px;
-}
+} */
 
 legend {
 	top: 20px;
@@ -803,6 +821,12 @@ legend {
 }
 
 .CharactersClass {
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 40px;
+	margin-right: 200px;
 	opacity: 0;
 	transform: translateX(100px);
 	animation: slideInLeft 0.8s ease forwards;
@@ -857,33 +881,9 @@ legend {
 	height: 100%;
 }
 
-/* Companion */
-
-.Companion {
-	z-index: -1;
-	display: flex;
-	position: fixed;
-	width: 150%;
-	height: 100%;
-}
-
-Canvas {
-	position: flex;
-	left: 0;
-	width: 50%;
-	height: 100%;
-}
-
-.CharactersClass {
-	width: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 40px;
-	margin-right: 200px;
-}
-
-/* Paramètrages téléphone */
+/* Paramètrages téléphone *//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
 @media screen and (orientation: portrait) {
 
@@ -963,15 +963,7 @@ Canvas {
 		align-items: center;
 	}
 
-	/* Companion */
-
-	Canvas {
-		display: flex;
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: 50%;
-	}
+	/* Companion Phone Component */
 
 	.Companion {
 		z-index: 1;
@@ -1019,14 +1011,6 @@ Canvas {
 	}
 
 	/* Portfolio */
-
-	.page {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 10px;
-	}
 
 	legend {
 		margin: 10px 0;

@@ -6,7 +6,7 @@ import Third from "/public/3.jpg";
 export default function CharacterSelection({ onSelect }) {
 	const characters = [
 		{
-			name: "A propos de moi",
+			name: "A propos de moi !",
 			image: First,
 			destination: "myself",
 		},
