@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import music from "./assets/music.mp3";
+import clickSound from "./assets/click.mp3";
 
 import Gamemode from "./components/Gamemode";
 import StartScreen from "./components/StartScreen";
@@ -15,6 +16,15 @@ import Cursor from "../hooks/Cursor";
 function App() {
 	const audioRef = useRef(null);
 	const [musicStarted, setMusicStarted] = useState(false);
+
+	const clickAudioRef = useRef(null);
+
+	const playClick = () => {
+		if (!clickAudioRef.current) return;
+
+		clickAudioRef.current.currentTime = 0;
+		clickAudioRef.current.play().catch(() => {});
+	};
 
 	const [isMobilePortrait, setIsMobilePortrait] = useState(
 		window.innerHeight > window.innerWidth
@@ -99,6 +109,7 @@ function App() {
 	};
 
 	const goBack = () => {
+		playClick();
 		setHistory((prev) => {
 			if (prev.length === 0) return prev;
 
@@ -112,16 +123,19 @@ function App() {
 	};
 
 	const handleSelectMode = (mode) => {
+		playClick();
 		setControlMode(mode);
 		showLoadingThen("start");
 	};
 
 	const handleStart = () => {
+		playClick();
 		startMusic();
 		showLoadingThen("selection");
 	};
 
 	const handleCharacterSelect = (character) => {
+		playClick();
 		setSelectedCharacter(character);
 		showLoadingThen(character.destination);
 	};
@@ -129,6 +143,7 @@ function App() {
 	return (
 		<>
 			<audio ref={audioRef} src={music} loop />
+			<audio ref={clickAudioRef} src={clickSound} preload="auto" />
 
 			{controlMode === "mouse" && !isMobilePortrait && <Cursor />}
 
