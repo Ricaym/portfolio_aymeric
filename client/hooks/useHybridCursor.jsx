@@ -12,7 +12,7 @@ export function useHybridCursor() {
 	useEffect(() => {
 		let frame;
 
-		const deadZone = 0.15;
+		const deadZone = 0;
 		const speed = 10;
 
 		const onMouseMove = (e) => {

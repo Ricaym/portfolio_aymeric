@@ -14,7 +14,7 @@ export function useGamepadNavigation(enabled = true) {
 	useEffect(() => {
 		let frame;
 
-		const deadZone = 0.05;
+		const deadZone = 0;
 		const speed = 12;
 
 		let prevA = false;
