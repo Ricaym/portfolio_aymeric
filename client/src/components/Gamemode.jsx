@@ -1,7 +1,7 @@
 function Gamemode({ onSelectMode }) {
 	return (
 		<div className="Screen">
-			<div className="SelectModeRules">
+			{/* <div className="SelectModeRules">
 				<p>
 					Ceci est un portfolio récréatif, et a pour but de montrer l'ensemble de mes compétences liées au développement. <br />
 					Découvrez cet univers inspiré de Destiny 2. <br />
@@ -11,7 +11,7 @@ function Gamemode({ onSelectMode }) {
 					Surtout n'oubliez pas de tout tester et de me dire ce que vous en avez pensé. <br />
 					Merci à vous, bonne visite. <br />
 				</p>
-			</div>
+			</div> */}
 
 			<div className="SelectMode">
 				<p className="SelectModeTitle">

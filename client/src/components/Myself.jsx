@@ -4,7 +4,7 @@ import BackButton from './BackButton';
 export default function Portfolio({ onBack }) {
 
 	return (
-		<div className="MyselfPage">
+		<div className="MyselfSection">
 			<BackButton onBack={onBack} />
 			<legend>A propos de moi !</legend>
 

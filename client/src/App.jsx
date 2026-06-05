@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import music from "./assets/music.mp3";
+
 import Gamemode from "./components/Gamemode";
 import StartScreen from "./components/StartScreen";
 import CharacterSelection from "./components/CharacterSelection";
@@ -11,13 +13,13 @@ import { GamepadCursor } from "../hooks/GamepadCursor";
 import Cursor from "../hooks/Cursor";
 
 function App() {
-	// Détection mobile portrait
+	const audioRef = useRef(null);
+	const [musicStarted, setMusicStarted] = useState(false);
+
 	const [isMobilePortrait, setIsMobilePortrait] = useState(
 		window.innerHeight > window.innerWidth
 	);
 
-	// Si téléphone portrait → StartScreen
-	// Sinon → choix du mode
 	const [step, setStep] = useState(
 		window.innerHeight > window.innerWidth
 			? "start"
@@ -28,6 +30,20 @@ function App() {
 	const [selectedCharacter, setSelectedCharacter] =
 		useState(null);
 	const [nextStep, setNextStep] = useState(null);
+	const [history, setHistory] = useState([]);
+
+	const startMusic = () => {
+		if (musicStarted) return;
+
+		audioRef.current
+			?.play()
+			.then(() => {
+				setMusicStarted(true);
+			})
+			.catch((err) => {
+				console.log("Musique bloquée par le navigateur :", err);
+			});
+	};
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -36,7 +52,6 @@ function App() {
 
 			setIsMobilePortrait(portrait);
 
-			// Si on arrive sur mobile portrait depuis le modeSelect
 			if (portrait && step === "modeSelect") {
 				setStep("start");
 			}
@@ -60,11 +75,15 @@ function App() {
 		};
 	}, [controlMode]);
 
+	useEffect(() => {
+		if (step === "start") {
+			startMusic();
+		}
+	}, [step]);
+
 	const { cursor } = useGamepadNavigation(
 		controlMode === "gamepad"
 	);
-
-	const [history, setHistory] = useState([]);
 
 	const showLoadingThen = (destination, addToHistory = true) => {
 		if (addToHistory) {
@@ -98,6 +117,7 @@ function App() {
 	};
 
 	const handleStart = () => {
+		startMusic();
 		showLoadingThen("selection");
 	};
 
@@ -108,15 +128,14 @@ function App() {
 
 	return (
 		<>
-			{/* Curseur souris uniquement hors mode gamepad */}
+			<audio ref={audioRef} src={music} loop />
+
 			{controlMode === "mouse" && !isMobilePortrait && <Cursor />}
 
-			{/* Curseur manette */}
 			{controlMode === "gamepad" && (
 				<GamepadCursor x={cursor.x} y={cursor.y} visible={true} />
 			)}
 
-			{/* Choix du mode uniquement sur desktop/paysage */}
 			{!isMobilePortrait && step === "modeSelect" && (
 				<Gamemode onSelectMode={handleSelectMode} />
 			)}
