@@ -552,7 +552,7 @@ body {
 	display: flex;
 	width: 60px;
 	height: 60px;
-	border: 3px solid rgba(255, 255, 255, 0.5);
+	border: 2px solid rgba(255, 255, 255, 1);
 	border-radius: 50%;
 	position: fixed;
 	pointer-events: none;
@@ -768,7 +768,6 @@ body {
 
 .CharacterCard:hover, .CharacterCard.gamepad-hover {
 	border: 2px solid rgba(207, 100, 100, 1);
-	transform: scale(1.05);
 	color: rgba(207, 100, 100, 1);
 }
 
@@ -811,6 +810,7 @@ legend {
 /* Myself Component Page */
 
 .MyselfSection {
+	border: 1px solid red;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -840,7 +840,7 @@ legend {
 }
 
 .profilePicture {
-	width: calc(20% - 17px);
+	width: 300px;
 	height: 500px;
 	align-self: left;
 	background-image: url(./assets/profile_picture.png);
@@ -848,9 +848,7 @@ legend {
 	background-size: 100%;
 	backdrop-filter: blur(5px);
 	-webkit-backdrop-filter: blur(5px);
-	border: 1px solid rgba(255, 255, 255, 0.3);
 	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-	border-radius: 20px;
 	margin-left: 10px;
 }
 
@@ -859,10 +857,9 @@ legend {
 	align-items: center;
 	width: calc(80% - 17px);
 	height: 500px;
-	backdrop-filter: blur(5px);	-webkit-backdrop-filter: blur(5px);
-	border: 1px solid rgba(255, 255, 255, 0.3);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
 	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-	border-radius: 20px;
 	margin-left: 10px;
 }
 
@@ -887,6 +884,27 @@ legend {
 	height: 500px;
 	backdrop-filter: blur(5px);	-webkit-backdrop-filter: blur(5px);
 	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+	margin-left: 10px;
+}
+
+/* Contact Component Page*/
+
+.ContactSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.ContactList {
+	display: flex;
+	align-items: center;
+	width: calc(80% - 17px);
+	height: 500px;
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
 	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 	margin-left: 10px;
 }
