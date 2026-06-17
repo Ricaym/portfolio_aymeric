@@ -4,16 +4,14 @@ import BackButton from './BackButton';
 export default function Portfolio({ onBack }) {
 
 	return (
-		<div className="page">
+		<div className="ContactSection">
             <BackButton onBack={onBack} />
 			<legend>Mes contacts !</legend>
 
-			<div className="myselfCard">
-				<div className="profilePicture"></div>
+			<div className="ContactList">
 				<div className="description">
 					<p className="description_paragraph">
-						Hello, my name is Aymeric Chasssagne.<br/><br/>
-						I am a web developer for Conduent Business Solutions France.<br/>
+						Si vous souhaitez me contacter vou pouvez le faire via mes différents réseaux <br/><br/>
 					</p>
 				</div>
 			</div>
