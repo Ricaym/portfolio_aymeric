@@ -8,8 +8,6 @@ export default function Portfolio({ onBack }) {
             <BackButton onBack={onBack} />
 			<legend>Mes projets !</legend>
 
-			<div className="ListProjets">
-			</div>
 		</div>
 	);
 }
