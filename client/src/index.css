@@ -1122,3 +1122,78 @@ legend {
 		}
 	}
 }
+
+/* Buttons (Cross, Square, Triangle, Sphere) */
+
+.ps-button {
+	--button-size: 22px;
+	--line-width: 2px;
+	position: relative;
+	display: inline-flex;
+	width: var(--button-size);
+	height: var(--button-size);
+	margin: 0 4px;
+	vertical-align: -5px;
+	box-sizing: border-box;
+}
+
+/* Rond */
+.ps-circle {
+	border: var(--line-width) solid #e94b78;
+	border-radius: 50%;
+}
+
+/* Carré */
+.ps-square {
+	border: var(--line-width) solid #db6ee5;
+	border-radius: 2px;
+}
+
+/* Croix */
+.ps-cross::before,
+.ps-cross::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: var(--line-width);
+	border-radius: 999px;
+	background: #62a9ef;
+	transform-origin: center;
+}
+
+.ps-cross::before {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ps-cross::after {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Triangle */
+.ps-triangle {
+	border-bottom: var(--line-width) solid #45c9a5;
+}
+
+.ps-triangle::before,
+.ps-triangle::after {
+	content: "";
+	position: absolute;
+	bottom: -1px;
+	width: var(--line-width);
+	height: 100%;
+	border-radius: 999px;
+	background: #45c9a5;
+	transform-origin: bottom center;
+}
+
+.ps-triangle::before {
+	left: 6%;
+	transform: translateX(-50%) rotate(30deg);
+}
+
+.ps-triangle::after {
+	right: 6%;
+	transform: translateX(100%) rotate(-30deg);
+}
