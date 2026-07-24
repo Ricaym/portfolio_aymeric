@@ -6,7 +6,7 @@ export default function Portfolio({ onBack }) {
 	return (
 		<div className="MyselfSection">
             <BackButton onBack={onBack} />
-			<legend>Mes contacts !</legend>
+			<legend>Contact me</legend>
 
 			<div className="myselfCard">
 				<div className="profilePicture"></div>
