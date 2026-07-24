@@ -6,7 +6,7 @@ import Third from "/public/3.png";
 export default function CharacterSelection({ onSelect }) {
 	const characters = [
 		{
-			name: "About me !",
+			name: "About me",
 			image: First,
 			destination: "myself",
 		},
@@ -16,7 +16,7 @@ export default function CharacterSelection({ onSelect }) {
 			destination: "projects",
 		},
 		{
-			name: "My Contacts",
+			name: "Contact me",
 			image: Third,
 			destination: "contacts",
 		},
