@@ -5,8 +5,11 @@ export default function Portfolio({ onBack }) {
 
 	return (
 		<div className="MyselfSection">
-			<BackButton onBack={onBack} />
-			<legend>A propos de moi !</legend>
+			<header className="myselfHeader">
+				<BackButton onBack={onBack} />
+				<legend className="myselfTitle">A propos de moi !</legend>
+			</header>
+			
 
 			<div className="myselfCard">
 				<div className="profilePicture"></div>
