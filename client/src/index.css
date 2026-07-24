@@ -542,7 +542,7 @@ body {
 }
 
 .BackButton:hover, .BackButton.gamepad-hover {
-	color: rgba(207, 100, 100, 1);
+	color: #77c4ff;
 }
 
 /* Curseur Hooks */
@@ -594,16 +594,14 @@ body {
 
 .SelectMode {
 	width: 500px;
-	height: 200px;
+	height: 100px;
 	left: calc(50% - 250px);
-	top: calc(50% - 100px);
+	top: calc(50% - 50px);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
-	backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .SelectModeTitle {
@@ -620,8 +618,7 @@ body {
 }
 
 .SelectModeButtons>button:hover {
-	color: black;
-	border: 1px solid rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(255, 255, 255, 1);
 }
 
 .ControllerRules {
@@ -763,20 +760,17 @@ body {
 	height: 100px;
 	transition: 0.3s;
 	box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-	border: 2px solid transparent;
+	border: 0;
+	background: rgba(0, 0, 0, 0.2);
 }
 
 .CharacterCard:hover, .CharacterCard.gamepad-hover {
-	border: 2px solid rgba(207, 100, 100, 1);
-	color: rgba(207, 100, 100, 1);
-}
-
-.CharacterCard:hover p,
-.CharacterCard.gamepad-hover p {
-    color: rgba(207, 100, 100, 1);
+	transform: scale(1.05);
+	box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
 }
 
 .CharacterName {
+	color: black;
 	z-index: 2;
 	display: flex;
 	position: relative;
@@ -785,7 +779,7 @@ body {
 	padding: 0 120px;
 	width: 100%;
 	height: 100%;
-	left: 0;
+	left: -30px;
 }
 
 .CharacterImage {
