@@ -1,23 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import {
-	AlertTriangle,
-	BookOpen,
-	Building2,
-	CalendarDays,
-	CircleDot,
-	Code2,
-	ExternalLink,
-	GitCommitHorizontal,
-	GitFork,
-	GitPullRequest,
-	Link as LinkIcon,
-	LoaderCircle,
-	MapPin,
-	Search,
-	Star,
-	Users,
-} from "lucide-react";
-
+import {AlertTriangle, BookOpen, Building2, CalendarDays, CircleDot, Code2, ExternalLink, GitCommitHorizontal, GitFork, GitPullRequest, Link as LinkIcon, LoaderCircle, MapPin, Search, Star, Users} from "lucide-react";
 import "../index.css";
 import BackButton from "./BackButton";
 
@@ -407,8 +389,6 @@ export default function Portfolio({ onBack }) {
 	if (loading) {
 		return (
 			<div className="ProjectSection">
-				<BackButton onBack={onBack} />
-
 				<div className="github-state">
 					<LoaderCircle className="github-loader" size={34} />
 					<p>Chargement des données GitHub…</p>
@@ -419,397 +399,401 @@ export default function Portfolio({ onBack }) {
 
 	if (error) {
 		return (
-			<div className="ProjectSection">
-				<BackButton onBack={onBack} />
-
-				<div className="github-state github-error">
-					<AlertTriangle size={34} />
-					<h1>Impossible de charger GitHub</h1>
-					<p>{error}</p>
+			<div>
+				<header className="projectHeader">
+					<BackButton onBack={onBack} />
+					<h1 className="projectTitle">À propos de moi !</h1>
+				</header>
+				<div className="ProjectSection">
+					<div className="github-state github-error">
+						<AlertTriangle size={34} />
+						<h1>Impossible de charger GitHub</h1>
+						<p>{error}</p>
+					</div>
 				</div>
 			</div>
 		);
 	}
 
 	return (
-		<div className="ProjectSection">
-			<BackButton onBack={onBack} />
+		<div>
+			<div className="ProjectSection">
+				<main className="github-dashboard">
+					<section className="github-profile">
+						<img
+							className="github-avatar"
+							src={user.avatarUrl}
+							alt={`Avatar GitHub de ${user.name || user.login}`}
+						/>
 
-			<main className="github-dashboard">
-				<section className="github-profile">
-					<img
-						className="github-avatar"
-						src={user.avatarUrl}
-						alt={`Avatar GitHub de ${user.name || user.login}`}
-					/>
+						<div className="github-profile-content">
+							<div className="github-profile-title">
+								<div>
+									<span className="github-section-label">
+										<Code2 size={17} />
+										Profil GitHub
+									</span>
 
-					<div className="github-profile-content">
-						<div className="github-profile-title">
-							<div>
-								<span className="github-section-label">
-									<Code2 size={17} />
-									Profil GitHub
-								</span>
+									<h1>{user.name || user.login}</h1>
+									<a
+										href={user.url}
+										target="_blank"
+										rel="noreferrer"
+									>
+										@{user.login}
+									</a>
+								</div>
 
-								<h1>{user.name || user.login}</h1>
 								<a
+									className="github-main-link"
 									href={user.url}
 									target="_blank"
 									rel="noreferrer"
 								>
-									@{user.login}
+									Voir mon GitHub
+									<ExternalLink size={17} />
 								</a>
 							</div>
 
-							<a
-								className="github-main-link"
-								href={user.url}
-								target="_blank"
-								rel="noreferrer"
-							>
-								Voir mon GitHub
-								<ExternalLink size={17} />
-							</a>
-						</div>
+							{user.bio && <p className="github-bio">{user.bio}</p>}
 
-						{user.bio && <p className="github-bio">{user.bio}</p>}
+							<div className="github-profile-details">
+								{user.location && (
+									<span>
+										<MapPin size={16} />
+										{user.location}
+									</span>
+								)}
 
-						<div className="github-profile-details">
-							{user.location && (
+								{user.company && (
+									<span>
+										<Building2 size={16} />
+										{user.company}
+									</span>
+								)}
+
+								{user.websiteUrl && (
+									<a
+										href={user.websiteUrl}
+										target="_blank"
+										rel="noreferrer"
+									>
+										<LinkIcon size={16} />
+										Site personnel
+									</a>
+								)}
+
 								<span>
-									<MapPin size={16} />
-									{user.location}
+									<CalendarDays size={16} />
+									Inscrit depuis {formatDate(user.createdAt)}
 								</span>
-							)}
-
-							{user.company && (
-								<span>
-									<Building2 size={16} />
-									{user.company}
-								</span>
-							)}
-
-							{user.websiteUrl && (
-								<a
-									href={user.websiteUrl}
-									target="_blank"
-									rel="noreferrer"
-								>
-									<LinkIcon size={16} />
-									Site personnel
-								</a>
-							)}
-
-							<span>
-								<CalendarDays size={16} />
-								Inscrit depuis {formatDate(user.createdAt)}
-							</span>
+							</div>
 						</div>
-					</div>
-				</section>
+					</section>
 
-				<section className="github-stat-grid">
-					<StatCard
-						icon={Code2}
-						label="Contributions"
-						value={calendar?.totalContributions}
-					/>
+					<section className="github-stat-grid">
+						<StatCard
+							icon={Code2}
+							label="Contributions"
+							value={calendar?.totalContributions}
+						/>
 
-					<StatCard
-						icon={GitCommitHorizontal}
-						label="Commits sur 12 mois"
-						value={contributions?.totalCommitContributions}
-					/>
+						<StatCard
+							icon={GitCommitHorizontal}
+							label="Commits sur 12 mois"
+							value={contributions?.totalCommitContributions}
+						/>
 
-					<StatCard
-						icon={BookOpen}
-						label="Dépôts publics"
-						value={repositories.length}
-					/>
+						<StatCard
+							icon={BookOpen}
+							label="Dépôts publics"
+							value={repositories.length}
+						/>
 
-					<StatCard
-						icon={Star}
-						label="Étoiles reçues"
-						value={totalStars}
-					/>
+						<StatCard
+							icon={Star}
+							label="Étoiles reçues"
+							value={totalStars}
+						/>
 
-					<StatCard
-						icon={CalendarDays}
-						label="Jours actifs"
-						value={activeDays}
-					/>
+						<StatCard
+							icon={CalendarDays}
+							label="Jours actifs"
+							value={activeDays}
+						/>
 
-					<StatCard
-						icon={CircleDot}
-						label="Plus longue série"
-						value={longestStreak}
-					/>
+						<StatCard
+							icon={CircleDot}
+							label="Plus longue série"
+							value={longestStreak}
+						/>
 
-					<StatCard
-						icon={GitPullRequest}
-						label="Pull requests"
-						value={contributions?.totalPullRequestContributions}
-					/>
+						<StatCard
+							icon={GitPullRequest}
+							label="Pull requests"
+							value={contributions?.totalPullRequestContributions}
+						/>
 
-					<StatCard
-						icon={Users}
-						label="Abonnés"
-						value={user.followers.totalCount}
-					/>
-				</section>
+						<StatCard
+							icon={Users}
+							label="Abonnés"
+							value={user.followers.totalCount}
+						/>
+					</section>
 
-				<section className="github-panel">
-					<header className="github-panel-header">
-						<div>
-							<span className="github-section-label">
-								<CalendarDays size={17} />
-								Activité
-							</span>
-
-							<h2>Contributions des douze derniers mois</h2>
-						</div>
-
-						<strong>
-							{formatNumber(calendar?.totalContributions)} contributions
-						</strong>
-					</header>
-
-					<ContributionCalendar calendar={calendar} />
-
-					{contributions?.restrictedContributionsCount > 0 && (
-						<p className="github-private-note">
-							{formatNumber(
-								contributions.restrictedContributionsCount,
-							)}{" "}
-							contributions privées sont comptabilisées sans que leur
-							contenu soit affiché.
-						</p>
-					)}
-				</section>
-
-				<div className="github-two-columns">
 					<section className="github-panel">
 						<header className="github-panel-header">
 							<div>
 								<span className="github-section-label">
-									<Code2 size={17} />
-									Technologies
+									<CalendarDays size={17} />
+									Activité
 								</span>
 
-								<h2>Langages principaux</h2>
+								<h2>Contributions des douze derniers mois</h2>
 							</div>
+
+							<strong>
+								{formatNumber(calendar?.totalContributions)} contributions
+							</strong>
 						</header>
 
-						<div className="github-language-list">
-							{languageStatistics.map((language) => (
-								<div
-									className="github-language-item"
-									key={language.name}
-								>
-									<div>
-										<span>
-											<i
-												className="github-language-dot"
+						<ContributionCalendar calendar={calendar} />
+
+						{contributions?.restrictedContributionsCount > 0 && (
+							<p className="github-private-note">
+								{formatNumber(
+									contributions.restrictedContributionsCount,
+								)}{" "}
+								contributions privées sont comptabilisées sans que leur
+								contenu soit affiché.
+							</p>
+						)}
+					</section>
+
+					<div className="github-two-columns">
+						<section className="github-panel">
+							<header className="github-panel-header">
+								<div>
+									<span className="github-section-label">
+										<Code2 size={17} />
+										Technologies
+									</span>
+
+									<h2>Langages principaux</h2>
+								</div>
+							</header>
+
+							<div className="github-language-list">
+								{languageStatistics.map((language) => (
+									<div
+										className="github-language-item"
+										key={language.name}
+									>
+										<div>
+											<span>
+												<i
+													className="github-language-dot"
+													style={{
+														backgroundColor:
+															language.color || "#8b949e",
+													}}
+												/>
+												{language.name}
+											</span>
+
+											<strong>{language.percentage}%</strong>
+										</div>
+
+										<div className="github-language-track">
+											<div
 												style={{
+													width: `${language.percentage}%`,
 													backgroundColor:
 														language.color || "#8b949e",
 												}}
 											/>
-											{language.name}
-										</span>
-
-										<strong>{language.percentage}%</strong>
+										</div>
 									</div>
-
-									<div className="github-language-track">
-										<div
-											style={{
-												width: `${language.percentage}%`,
-												backgroundColor:
-													language.color || "#8b949e",
-											}}
-										/>
-									</div>
-								</div>
-							))}
-						</div>
-					</section>
-
-					<section className="github-panel">
-						<header className="github-panel-header">
-							<div>
-								<span className="github-section-label">
-									<GitCommitHorizontal size={17} />
-									Activité publique
-								</span>
-
-								<h2>Commits récents</h2>
-							</div>
-						</header>
-
-						<div className="github-commit-list">
-							{githubData.recentCommits.length === 0 && (
-								<p>Aucun commit public récent trouvé.</p>
-							)}
-
-							{githubData.recentCommits.slice(0, 8).map((commit) => (
-								<a
-									key={`${commit.repository}-${commit.sha}`}
-									className="github-commit"
-									href={commit.url}
-									target="_blank"
-									rel="noreferrer"
-								>
-									<GitCommitHorizontal size={17} />
-
-									<div>
-										<strong>{commit.message}</strong>
-										<span>
-											{commit.repository} ·{" "}
-											{formatDate(commit.date)}
-										</span>
-									</div>
-
-									<ExternalLink size={15} />
-								</a>
-							))}
-						</div>
-					</section>
-				</div>
-
-				{user.organizations?.nodes?.length > 0 && (
-					<section className="github-panel">
-						<header className="github-panel-header">
-							<div>
-								<span className="github-section-label">
-									<Building2 size={17} />
-									Communautés
-								</span>
-
-								<h2>Organisations GitHub</h2>
-							</div>
-						</header>
-
-						<div className="github-organization-list">
-							{user.organizations.nodes.map((organization) => (
-								<a
-									key={organization.login}
-									href={organization.url}
-									target="_blank"
-									rel="noreferrer"
-								>
-									<img
-										src={organization.avatarUrl}
-										alt=""
-									/>
-
-									<span>
-										<strong>
-											{organization.name ||
-												organization.login}
-										</strong>
-										<small>@{organization.login}</small>
-									</span>
-								</a>
-							))}
-						</div>
-					</section>
-				)}
-
-				<section className="github-project-section">
-					<header className="github-project-heading">
-						<div>
-							<span className="github-section-label">
-								<BookOpen size={17} />
-								Réalisations
-							</span>
-
-							<h2>Mes projets</h2>
-							<p>
-								{filteredRepositories.length} projet
-								{filteredRepositories.length > 1 ? "s" : ""} affiché
-								{filteredRepositories.length > 1 ? "s" : ""}
-							</p>
-						</div>
-
-						<div className="github-project-filters">
-							<label className="github-search">
-								<Search size={17} />
-
-								<input
-									type="search"
-									value={search}
-									onChange={(event) =>
-										setSearch(event.target.value)
-									}
-									placeholder="Rechercher un projet…"
-								/>
-							</label>
-
-							<select
-								value={selectedLanguage}
-								onChange={(event) =>
-									setSelectedLanguage(event.target.value)
-								}
-								aria-label="Filtrer par langage"
-							>
-								<option value="all">Tous les langages</option>
-
-								{availableLanguages.map((language) => (
-									<option key={language} value={language}>
-										{language}
-									</option>
 								))}
-							</select>
+							</div>
+						</section>
 
-							<label className="github-checkbox">
-								<input
-									type="checkbox"
-									checked={showForks}
-									onChange={(event) =>
-										setShowForks(event.target.checked)
-									}
-								/>
-								Forks
-							</label>
+						<section className="github-panel">
+							<header className="github-panel-header">
+								<div>
+									<span className="github-section-label">
+										<GitCommitHorizontal size={17} />
+										Activité publique
+									</span>
 
-							<label className="github-checkbox">
-								<input
-									type="checkbox"
-									checked={showArchived}
-									onChange={(event) =>
-										setShowArchived(event.target.checked)
-									}
-								/>
-								Archivés
-							</label>
-						</div>
-					</header>
+									<h2>Commits récents</h2>
+								</div>
+							</header>
 
-					<div className="github-repository-grid">
-						{filteredRepositories.map((repository) => (
-							<RepositoryCard
-								key={repository.id}
-								repository={repository}
-								commitCount={
-									commitsByRepository.get(
-										repository.nameWithOwner,
-									) || 0
-								}
-								isPinned={pinnedRepositories.has(
-									repository.nameWithOwner,
+							<div className="github-commit-list">
+								{githubData.recentCommits.length === 0 && (
+									<p>Aucun commit public récent trouvé.</p>
 								)}
-							/>
-						))}
+
+								{githubData.recentCommits.slice(0, 8).map((commit) => (
+									<a
+										key={`${commit.repository}-${commit.sha}`}
+										className="github-commit"
+										href={commit.url}
+										target="_blank"
+										rel="noreferrer"
+									>
+										<GitCommitHorizontal size={17} />
+
+										<div>
+											<strong>{commit.message}</strong>
+											<span>
+												{commit.repository} ·{" "}
+												{formatDate(commit.date)}
+											</span>
+										</div>
+
+										<ExternalLink size={15} />
+									</a>
+								))}
+							</div>
+						</section>
 					</div>
 
-					{filteredRepositories.length === 0 && (
-						<div className="github-empty">
-							Aucun projet ne correspond aux filtres sélectionnés.
-						</div>
+					{user.organizations?.nodes?.length > 0 && (
+						<section className="github-panel">
+							<header className="github-panel-header">
+								<div>
+									<span className="github-section-label">
+										<Building2 size={17} />
+										Communautés
+									</span>
+
+									<h2>Organisations GitHub</h2>
+								</div>
+							</header>
+
+							<div className="github-organization-list">
+								{user.organizations.nodes.map((organization) => (
+									<a
+										key={organization.login}
+										href={organization.url}
+										target="_blank"
+										rel="noreferrer"
+									>
+										<img
+											src={organization.avatarUrl}
+											alt=""
+										/>
+
+										<span>
+											<strong>
+												{organization.name ||
+													organization.login}
+											</strong>
+											<small>@{organization.login}</small>
+										</span>
+									</a>
+								))}
+							</div>
+						</section>
 					)}
-				</section>
-			</main>
+
+					<section className="github-project-section">
+						<header className="github-project-heading">
+							<div>
+								<span className="github-section-label">
+									<BookOpen size={17} />
+									Réalisations
+								</span>
+
+								<h2>Mes projets</h2>
+								<p>
+									{filteredRepositories.length} projet
+									{filteredRepositories.length > 1 ? "s" : ""} affiché
+									{filteredRepositories.length > 1 ? "s" : ""}
+								</p>
+							</div>
+
+							<div className="github-project-filters">
+								<label className="github-search">
+									<Search size={17} />
+
+									<input
+										type="search"
+										value={search}
+										onChange={(event) =>
+											setSearch(event.target.value)
+										}
+										placeholder="Rechercher un projet…"
+									/>
+								</label>
+
+								<select
+									value={selectedLanguage}
+									onChange={(event) =>
+										setSelectedLanguage(event.target.value)
+									}
+									aria-label="Filtrer par langage"
+								>
+									<option value="all">Tous les langages</option>
+
+									{availableLanguages.map((language) => (
+										<option key={language} value={language}>
+											{language}
+										</option>
+									))}
+								</select>
+
+								<label className="github-checkbox">
+									<input
+										type="checkbox"
+										checked={showForks}
+										onChange={(event) =>
+											setShowForks(event.target.checked)
+										}
+									/>
+									Forks
+								</label>
+
+								<label className="github-checkbox">
+									<input
+										type="checkbox"
+										checked={showArchived}
+										onChange={(event) =>
+											setShowArchived(event.target.checked)
+										}
+									/>
+									Archivés
+								</label>
+							</div>
+						</header>
+
+						<div className="github-repository-grid">
+							{filteredRepositories.map((repository) => (
+								<RepositoryCard
+									key={repository.id}
+									repository={repository}
+									commitCount={
+										commitsByRepository.get(
+											repository.nameWithOwner,
+										) || 0
+									}
+									isPinned={pinnedRepositories.has(
+										repository.nameWithOwner,
+									)}
+								/>
+							))}
+						</div>
+
+						{filteredRepositories.length === 0 && (
+							<div className="github-empty">
+								Aucun projet ne correspond aux filtres sélectionnés.
+							</div>
+						)}
+					</section>
+				</main>
+			</div>
 		</div>
 	);
 }
