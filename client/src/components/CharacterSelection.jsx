@@ -28,7 +28,7 @@ export default function CharacterSelection({ onSelect }) {
 
 			<div className="CharactersClass">
 				{characters.map((character) => (
-					<div key={character.name} className="CharacterCard" onClick={() => onSelect(character)}>
+					<div key={character.name} className="CharacterCard" onClick={() => onSelect(character)} data-cursor-hover>
 						<p className="CharacterName">{character.name}</p>
 						<img className="CharacterImage" src={character.image} alt={character.name} />
 						<i class="fi fi-br-6"></i>
