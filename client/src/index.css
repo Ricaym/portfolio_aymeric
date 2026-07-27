@@ -16,6 +16,18 @@ body {
 	background-position: center;
 }
 
+body,
+body *,
+button,
+a,
+input,
+textarea,
+select,
+.escapeMenuOverlay,
+.escapeMenuOverlay * {
+	cursor: none !important;
+}
+
 /* Police d'écriture */
 
 @font-face {
@@ -539,10 +551,12 @@ body {
 	border: none;
 	font-size: 25px;
 	border: 1px solid transparent;
+	border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .BackButton:hover, .BackButton.gamepad-hover {
-	border: 1px solid rgba(255, 255, 255, 1);
+	backdrop-filter: blur(5px);	-webkit-backdrop-filter: blur(5px);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 /* Curseur Hooks */
@@ -1316,7 +1330,6 @@ textarea,
 		-webkit-backdrop-filter: blur(5px);
 		border: none;
 		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-		border-radius: 0;
 		margin: 0;
 	}
 
@@ -1329,7 +1342,6 @@ textarea,
 		-webkit-backdrop-filter: blur(5px);
 		border: none;
 		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-		border-radius: 0;
 		margin: 0;
 	}
 
@@ -1426,7 +1438,7 @@ textarea,
 /* GitHub integration */
 
 .github-dashboard {
-	--github-cyan: #00d9ff;
+	--github-cyan: rgba(255, 255, 255, 0.3);
 	--github-orange: #ff8c42;
 	--github-wheat: #f5deb3;
 	--github-border: rgba(255, 255, 255, 0.12);
@@ -1459,15 +1471,13 @@ textarea,
 	gap: 30px;
 	align-items: center;
 	padding: 30px;
-	border-radius: 24px;
 }
 
 .github-avatar {
 	width: 150px;
 	height: 150px;
 	flex-shrink: 0;
-	border: 3px solid var(--github-cyan);
-	border-radius: 50%;
+	border: 1px solid var(--github-cyan);
 	object-fit: cover;
 	box-shadow: 0 0 30px rgba(0, 217, 255, 0.16);
 }
@@ -1513,7 +1523,6 @@ textarea,
 	flex-shrink: 0;
 	padding: 11px 16px;
 	border: 1px solid var(--github-cyan);
-	border-radius: 10px;
 	color: var(--github-cyan) !important;
 	transition:
 		transform 180ms ease,
@@ -1564,7 +1573,6 @@ textarea,
 	align-items: center;
 	min-height: 95px;
 	padding: 19px;
-	border-radius: 16px;
 }
 
 .github-stat-card > svg {
@@ -1589,7 +1597,6 @@ textarea,
 .github-panel {
 	margin-top: 22px;
 	padding: 25px;
-	border-radius: 20px;
 }
 
 .github-panel-header {
@@ -1630,7 +1637,6 @@ textarea,
 	width: 11px;
 	height: 11px;
 	border: 1px solid rgba(255, 255, 255, 0.06);
-	border-radius: 2px;
 	transition:
 		transform 120ms ease,
 		filter 120ms ease;
@@ -1683,20 +1689,17 @@ textarea,
 	width: 10px;
 	height: 10px;
 	flex-shrink: 0;
-	border-radius: 50%;
 }
 
 .github-language-track {
 	height: 7px;
 	overflow: hidden;
-	border-radius: 20px;
 	background: rgba(255, 255, 255, 0.08);
 }
 
 .github-language-track div {
 	height: 100%;
 	min-width: 2px;
-	border-radius: inherit;
 }
 
 .github-commit-list {
@@ -1710,7 +1713,6 @@ textarea,
 	gap: 12px;
 	align-items: center;
 	padding: 11px;
-	border-radius: 10px;
 	transition: background 160ms ease;
 }
 
@@ -1760,7 +1762,6 @@ textarea,
 	align-items: center;
 	padding: 10px 13px;
 	border: 1px solid var(--github-border);
-	border-radius: 12px;
 	transition:
 		transform 160ms ease,
 		border-color 160ms ease;
@@ -1774,7 +1775,6 @@ textarea,
 .github-organization-list img {
 	width: 38px;
 	height: 38px;
-	border-radius: 8px;
 }
 
 .github-organization-list span {
@@ -1818,7 +1818,6 @@ textarea,
 	min-width: 230px;
 	padding: 9px 12px;
 	border: 1px solid var(--github-border);
-	border-radius: 10px;
 	background: var(--github-surface);
 }
 
@@ -1845,7 +1844,6 @@ textarea,
 .github-project-filters select {
 	padding: 10px 12px;
 	border: 1px solid var(--github-border);
-	border-radius: 10px;
 	outline: none;
 	color: white;
 	background: #171717;
@@ -1871,7 +1869,6 @@ textarea,
 	flex-direction: column;
 	min-height: 260px;
 	padding: 22px;
-	border-radius: 17px;
 	transition:
 		transform 180ms ease,
 		border-color 180ms ease,
@@ -1879,8 +1876,7 @@ textarea,
 }
 
 .github-repository-card:hover {
-	transform: translateY(-4px);
-	border-color: rgba(0, 217, 255, 0.55);
+	border-color: rgba(255, 255, 255, 0.3);
 	background: var(--github-surface-hover);
 }
 
@@ -1916,7 +1912,6 @@ textarea,
 .github-icon-link {
 	height: fit-content;
 	padding: 7px;
-	border-radius: 8px;
 	color: var(--github-muted) !important;
 }
 
@@ -1935,7 +1930,6 @@ textarea,
 .github-badge,
 .github-topic {
 	padding: 4px 8px;
-	border-radius: 20px;
 	font-size: 0.7rem;
 }
 
@@ -2095,5 +2089,225 @@ textarea,
 	.github-repository-footer {
 		align-items: flex-start;
 		flex-direction: column;
+	}
+}
+
+/* Escape menu */
+
+.escapeMenuOverlay {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+	animation: escapeOverlayAppear 180ms ease-out;
+}
+
+.escapeMenu {
+	width: min(520px, 100%);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 255, 255, 0.14);
+	animation: escapeMenuAppear 200ms ease-out;
+}
+
+.escapeMenuHeader {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 24px;
+	border-bottom: 1px solid rgba(245, 222, 179, 0.12);
+}
+
+.escapeMenuHeader h2 {
+	margin: 4px 0 0;
+	font-size: 2rem;
+}
+
+.escapeMenuLabel {
+	color: wheat;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+}
+
+.escapeMenuClose {
+	display: grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	color: wheat;
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	transition:
+		transform 150ms ease,
+		color 150ms ease,
+		border-color 150ms ease;
+}
+
+.escapeMenuClose:hover {
+	color: white;
+	border-color: white;
+	/* transform: scale(1.06); */
+}
+
+.escapeMenuContent {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 24px;
+}
+
+.escapeMenuAction {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	width: 100%;
+	padding: 18px;
+	color: wheat;
+	text-align: left;
+	background: transparent;
+	border: 1px solid rgba(245, 222, 179, 0.14);
+	cursor: pointer;
+	transition:
+		transform 150ms ease,
+		border-color 150ms ease,
+		background-color 150ms ease;
+}
+
+.escapeMenuAction:hover {
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	backdrop-filter: blur(5px);	-webkit-backdrop-filter: blur(5px);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.escapeMenuAction svg {
+	flex-shrink: 0;
+	color: cyan;
+}
+
+.escapeMenuAction span {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.escapeMenuAction small {
+	color: rgba(245, 222, 179, 0.55);
+}
+
+.escapeMenuSection {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-top: 8px;
+}
+
+.escapeMenuSectionTitle {
+	color: rgba(245, 222, 179, 0.65);
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.escapeMenuModeGrid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 12px;
+}
+
+.escapeMenuMode {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	min-height: 90px;
+	padding: 16px;
+	color: rgba(245, 222, 179, 0.8);
+	background: rgba(255, 255, 255, 0.02);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	cursor: pointer;
+	transition:
+		transform 150ms ease,
+		color 150ms ease,
+		border-color 150ms ease,
+		background-color 150ms ease;
+}
+
+.escapeMenuMode:hover {
+	color: rgba(245, 222, 179, 0.8);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	backdrop-filter: blur(5px);	-webkit-backdrop-filter: blur(5px);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.escapeMenuMode.active {
+	color: rgba(245, 222, 179, 0.8);
+	background: rgba(245, 222, 179, 0.07);
+	border-color: rgba(245, 222, 179, 0.8);
+}
+
+.escapeMenuMode.active::after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 8px;
+	height: 8px;
+	background: rgba(245, 222, 179, 1);
+	box-shadow: 0 0 10px rgba(245, 222, 179, 1);
+}
+
+.escapeMenuFooter {
+	padding: 18px 24px;
+	color: rgba(245, 222, 179, 0.8);
+	text-align: center;
+	font-size: 0.85rem;
+	border-top: 1px solid rgba(245, 222, 179, 0.1);
+}
+
+.escapeMenuFooter kbd {
+	padding: 3px 8px;
+	color: white;
+	background: rgba(255, 0, 0, 0.2);
+	border: 1px solid red;
+}
+
+@keyframes escapeOverlayAppear {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes escapeMenuAppear {
+	from {
+		opacity: 0;
+		transform: translateY(-20px) scale(0.97);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@media (max-width: 520px) {
+	.escapeMenuOverlay {
+		padding: 14px;
+	}
+	.escapeMenuHeader,
+	.escapeMenuContent {
+		padding: 18px;
+	}
+	.escapeMenuModeGrid {
+		grid-template-columns: 1fr;
 	}
 }

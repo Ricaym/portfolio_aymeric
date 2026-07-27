@@ -278,7 +278,7 @@ export default function Projects({ onBack }) {
 		<div className="ProjectSection">
 			<header className="projectHeader">
 				<BackButton onBack={onBack} />
-				<h1 className="myselfTitle">About me !</h1>
+				<h1 className="myselfTitle">My projects !</h1>
 			</header>
 
 			<main className="github-dashboard">
