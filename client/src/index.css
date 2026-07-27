@@ -573,31 +573,36 @@ textarea,
 }
 
 .Cursor {
-	cursor: none;
-	display: flex;
-	width: 60px;
-	height: 60px;
-	border: 2px solid rgba(255, 255, 255, 1);
-	border-radius: 50%;
 	position: fixed;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
 	pointer-events: none;
 	transform: translate(-50%, -50%);
-	z-index: 999;
+	z-index: 99999;
+	background: radial-gradient(
+		circle,
+		transparent 0 28px,
+		rgba(255, 255, 255, 0.6) 29px,
+		rgba(255, 255, 255, 0.5) 32px,
+		rgba(255, 255, 255, 0.4) 35px,
+		rgba(255, 255, 255, 0.2) 38px,
+		transparent 40px
+	);
 }
 
-.Cursor--pointer {
+/* .Cursor--pointer {
 	cursor: none;
 	display: flex;
 	width: 60px;
 	height: 60px;
-	border: 2px solid rgba(255, 255, 255, 1);
 	border-radius: 50%;
 	position: fixed;
 	pointer-events: none;
 	transform: translate(-50%, -50%);
 	z-index: 999;
 	box-shadow: 0 0px 0px rgba(0, 0, 0, 1), 0 0 18px rgba(255, 255, 255, 1);
-}
+} */
 
 .cursorPointer {
 	cursor: none;
