@@ -4,6 +4,46 @@
 	cursor: none;
 }
 
+:root {
+	/* Couleurs principales de texte */
+	--color-text-primary: white;
+	--color-text-secondary: wheat;
+	--color-text-third: cyan;
+
+	/* Couleurs principales de fond */
+	--color-background-primary: white;
+	--color-text-secondary: wheat;
+	--color-text-third: cyan;
+	--color-background-text:rgba(255, 0, 0, 0.2);
+
+	/* Bordures et dégradés */
+	--color-border: rgba(255, 255, 255, 0.3);
+	--color-border-hover: rgba(255, 255, 255, 0.8);
+	--color-border-escape-menu: rgba(245, 222, 179, 0.2);
+
+	/* États */
+	--color-success: #4ade80;
+	--color-warning: #facc15;
+	--color-error: #ef4444;
+	--color-info: #38bdf8;
+
+	/* Transparences */
+	--overlay-dark: rgba(0, 0, 0, 0.75);
+	--overlay-light: rgba(255, 255, 255, 0.08);
+
+	/* PS buttons */
+	--color-circle: #e94b78;
+	--color-square: #db6ee5;
+	--color-cross: #62a9ef;
+	--color-triangle: #45c9a5;
+
+	/* Xbox buttons */
+	--color-xbox-a: #52b043;
+	--color-xbox-b: #e54848;
+	--color-xbox-x: #3d9be9;
+	--color-xbox-y: #f2c94c;
+}
+
 html {
 	height: 100%;
 	cursor: none;
@@ -68,7 +108,7 @@ select,
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background: #fff;
+	background: var(--color-background-primary);
 }
 
 .banter-loader__box:nth-child(3n) {
@@ -953,8 +993,6 @@ textarea,
 }
 
 .myselfCard {
-	/* border: 1px solid red; */
-	background: url(../public/idCardBackground.jpg);
 	background-size: 100%;
 	font-size: 35px;
 	display: flex;
@@ -999,7 +1037,7 @@ textarea,
 }
 
 .wheat {
-	color: cyan;
+	color: wheat;
 }
 
 .description p {
@@ -1038,8 +1076,7 @@ textarea,
 	box-sizing: border-box;
 	backface-visibility: hidden;
 	-webkit-backface-visibility: hidden;
-	background: rgba(15, 15, 25, 0.95);
-	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.3);
+	background: transparent;
 }
 
 .informationsCard {
@@ -1055,6 +1092,7 @@ textarea,
 .myselfCardBack {
 	transform: rotateY(180deg);
 	text-align: left;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .myselfCardFront h2, .myselfCardBack h2 {
@@ -1365,7 +1403,7 @@ textarea,
 	}
 }
 
-/* Buttons (Cross, Square, Triangle, Sphere) */
+/* Buttons (Cross, Square, Triangle, Circle) */
 
 .ps-button {
 	--button-size: 22px;
@@ -1381,19 +1419,18 @@ textarea,
 
 /* Rond */
 .ps-circle {
-	border: var(--line-width) solid #e94b78;
+	border: var(--line-width) solid var(--color-circle);
 	border-radius: 50%;
 }
 
 /* Carré */
 .ps-square {
-	border: var(--line-width) solid #db6ee5;
+	border: var(--line-width) solid var(--color-square);
 	border-radius: 2px;
 }
 
 /* Croix */
-.ps-cross::before,
-.ps-cross::after {
+.ps-cross::before, .ps-cross::after {
 	content: "";
 	position: absolute;
 	top: 50%;
@@ -1401,40 +1438,34 @@ textarea,
 	width: 100%;
 	height: var(--line-width);
 	border-radius: 999px;
-	background: #62a9ef;
+	background: var(--color-cross);
 	transform-origin: center;
 }
-
 .ps-cross::before {
 	transform: translate(-50%, -50%) rotate(45deg);
 }
-
 .ps-cross::after {
 	transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 /* Triangle */
 .ps-triangle {
-	border-bottom: var(--line-width) solid #45c9a5;
+	border-bottom: var(--line-width) solid var(--color-triangle);
 }
-
-.ps-triangle::before,
-.ps-triangle::after {
+.ps-triangle::before, .ps-triangle::after {
 	content: "";
 	position: absolute;
 	bottom: -1px;
 	width: var(--line-width);
 	height: 100%;
 	border-radius: 999px;
-	background: #45c9a5;
+	background: var(--color-triangle);
 	transform-origin: bottom center;
 }
-
 .ps-triangle::before {
 	left: 6%;
 	transform: translateX(-50%) rotate(30deg);
 }
-
 .ps-triangle::after {
 	right: 6%;
 	transform: translateX(100%) rotate(-30deg);
@@ -2124,7 +2155,7 @@ textarea,
 	align-items: flex-start;
 	justify-content: space-between;
 	padding: 24px;
-	border-bottom: 1px solid rgba(245, 222, 179, 0.12);
+	border-bottom: 1px solid var(--color-border-escape-menu);
 }
 
 .escapeMenuHeader h2 {
@@ -2157,7 +2188,7 @@ textarea,
 .escapeMenuClose:hover {
 	color: white;
 	border-color: white;
-	/* transform: scale(1.06); */
+	transform: scale(1.06);
 }
 
 .escapeMenuContent {
@@ -2274,13 +2305,13 @@ textarea,
 	color: rgba(245, 222, 179, 0.8);
 	text-align: center;
 	font-size: 0.85rem;
-	border-top: 1px solid rgba(245, 222, 179, 0.1);
+	border-top: 1px solid var(--color-border-escape-menu);
 }
 
 .escapeMenuFooter kbd {
 	padding: 3px 8px;
 	color: white;
-	background: rgba(255, 0, 0, 0.2);
+	background: var(--color-background-text);
 	border: 1px solid red;
 }
 
