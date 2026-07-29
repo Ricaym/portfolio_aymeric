@@ -84,9 +84,9 @@ The project showcases both my frontend development skills and my interest in cre
 
 # 🛠 Tech Stack
 
-| Frontend | Styling | APIs | Tools |
-|----------|---------|------|-------|
-| React | CSS3 | GitHub REST API | Vite |
+| Frontend | Styling | APIs | Tools | 3D |
+|----------|---------|------|-------|----|
+| React | CSS3 | GitHub REST API | Vite | Blender |
 | JavaScript | CSS Variables | | Git |
 | Hooks | Responsive Design (WIP) | | GitHub Pages |
 
