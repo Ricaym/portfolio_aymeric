@@ -5,7 +5,7 @@ import Third from "/public/3.png";
 
 import AnimatedNumber from "../../hooks/animations/AnimatedNumber";
 
-export default function CharacterSelection({ onSelect }) {
+export default function SectionSelection({ onSelect }) {
 	const characters = [
 		{
 			name: "About me",

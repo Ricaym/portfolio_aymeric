@@ -22,10 +22,10 @@ function Gamemode({ onSelectMode }) {
 
 			<div className="ControllerRules">
 				<p>
-					Appuyez sur <span className="A">A</span> ou <span class="ps-button ps-cross" aria-label="Croix"></span> pour sélectionner.
-					Appuyez sur <span className="Y">Y</span> ou <span class="ps-button ps-triangle" aria-label="Triangle"></span> pour revenir ici.
-					{/* <span class="ps-button ps-circle" aria-label="Rond"></span> */}
-					{/* <span class="ps-button ps-square" aria-label="Carré"></span> */}
+					Appuyez sur <span className="A">A</span> ou <span className="ps-button ps-cross" aria-label="Croix"></span> pour sélectionner.
+					Appuyez sur <span className="Y">Y</span> ou <span className="ps-button ps-triangle" aria-label="Triangle"></span> pour revenir ici.
+					{/* <span className="ps-button ps-circle" aria-label="Rond"></span> */}
+					{/* <span className="ps-button ps-square" aria-label="Carré"></span> */}
 				</p>
 			</div>
 		</div>

@@ -9,7 +9,7 @@ import clickSound from "./assets/click.mp3";
 
 import Gamemode from "./components/Gamemode";
 import StartScreen from "./components/StartScreen";
-import CharacterSelection from "./components/CharacterSelection";
+import SectionSelection from "./components/SectionSelection";
 import Myself from "./components/Myself";
 import Projects from "./components/Projects";
 import Contacts from "./components/Contacts";
@@ -292,7 +292,7 @@ function App() {
 			)}
 
 			{step === "selection" && (
-				<CharacterSelection
+				<SectionSelection
 					onSelect={
 						handleCharacterSelect
 					}
