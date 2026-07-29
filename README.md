@@ -1,24 +1,176 @@
-# Portfolio Aymeric Chassagne
+# 🎮 Aymeric's Portfolio
 
-### Lien du portfolio : https://ricaym.github.io/portfolio_aymeric/
+> An interactive developer portfolio inspired by the user interface and atmosphere of **Destiny 2**, built with React and Vite.
 
-### 🚧 Ce projet est actuellement en cours de développement 🚧
+<p align="center">
 
-[![Portfolio](https://img.shields.io/badge/Portfolio_Aymeric_Chassagne-000000?style=for-the-badge)](https://ricaym.github.io/portfolio_aymeric/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-181717?logo=github)](https://ricaym.github.io/portfolio_aymeric/)
+[![Status](https://img.shields.io/badge/Status-In_Development-orange)]()
 
-## Technologies utilisées
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Ricaym/)
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/fr/docs/Web/JavaScript)
-[![Blender](https://img.shields.io/badge/Blender-E87D0D?style=for-the-badge&logo=blender&logoColor=white)](https://www.blender.org/)
-[![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org/)
-___
+</p>
 
-## Contexte
-Ce projet à pour objectif de montrer une gamme de compétences
+---
 
-- 🎮 Site utilisable à la **manette**.
-- 🖱️ **Curseur personnalisé** pour la souris et les manettes.
-- 🔶 **Le companion** : Objet 3D créé à la main avec Blender. Le companion est un élement essentiel dans la vie d'un gardien. Ce petit objet animé permet de se retrouver.
-- 🔊 Une musique de fond et un son de clic.
+## 🌐 Live Demo
+
+➡️ **Website:**  
+https://ricaym.github.io/portfolio_aymeric/
+
+---
+
+# About
+
+This project is much more than a traditional portfolio.
+
+The goal was to design an immersive experience inspired by modern video game interfaces rather than a conventional website. Every interaction has been designed to feel smooth, dynamic and enjoyable, whether using a mouse or a game controller.
+
+The project showcases both my frontend development skills and my interest in creating polished user experiences.
+
+---
+
+# ✨ Features
+
+### 🎮 Controller Support
+
+- Xbox & PlayStation controller navigation
+- Fully custom gamepad cursor
+- Controller-friendly interface
+- Keyboard navigation
+
+### 🖱 Custom Cursor System
+
+- Animated cursor
+- Mouse & controller support
+- Dynamic hover detection
+- Custom React hooks
+
+### 🎨 Visual Experience
+
+- Destiny 2 inspired interface
+- Animated text effects
+- Smooth page transitions
+- Loading screen
+- Sound effects
+- Modern UI animations
+
+### 🌍 3D Integration
+
+- Blender 3D model
+- React Three Fiber rendering
+- Interactive 3D scene
+
+### 💻 Portfolio
+
+- About Me section
+- GitHub Projects
+- Contact page
+- GitHub API integration
+- Single Page Application
+
+---
+
+## ⭐ Highlights
+
+- 🎮 Fully playable with a game controller
+- 🖱 Custom mouse and gamepad cursors
+- 🌍 Blender 3D integration with React Three Fiber
+- ⚡ Fast React + Vite architecture
+- 📡 Live GitHub API integration
+- 🎨 Inspired by Destiny 2's futuristic interface
+
+---
+
+# 🛠 Tech Stack
+
+| Frontend | Styling | APIs | Tools |
+|----------|---------|------|-------|
+| React | CSS3 | GitHub REST API | Vite |
+| JavaScript | CSS Variables | | Git |
+| Hooks | Responsive Design (WIP) | | GitHub Pages |
+
+---
+
+# 📁 Project Structure
+
+```
+src/
+│
+├── components/
+├── hooks/
+├── assets/
+├── pages/
+├── styles/
+└── App.jsx
+```
+
+---
+
+# 🚀 Getting Started
+
+Clone the repository
+
+```bash
+git clone https://github.com/Ricaym/portfolio_aymeric.git
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start development server
+
+```bash
+npm run dev
+```
+
+Build production version
+
+```bash
+npm run build
+```
+
+---
+
+# 📌 Roadmap
+
+- [x] Interactive menu
+- [x] Loading screen
+- [x] Controller navigation
+- [x] Custom mouse cursor
+- [x] GitHub API integration
+- [x] Animated interface
+- [ ] Responsive layout
+- [ ] Contact form improvements
+- [ ] More portfolio projects
+- [ ] Performance optimization
+
+---
+
+# 📈 Future Improvements
+
+- Better accessibility
+- Additional controller features
+- More animations
+- Internationalization
+- Dark/Light theme support
+- Three.js interactive elements
+
+---
+
+# 👨‍💻 Author
+
+**Aymeric Chassagne**
+
+GitHub  
+https://github.com/Ricaym
+
+Portfolio  
+https://ricaym.github.io/portfolio_aymeric/
+
+---
+
+If you like this project, feel free to ⭐ the repository.
