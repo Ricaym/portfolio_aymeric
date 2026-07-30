@@ -720,6 +720,27 @@ textarea,
 	transform: translate(-50%, -50%);
 }
 
+/* Gamepad cursor */
+
+.gamepadCursor {
+		position: fixed;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	pointer-events: none;
+	transform: translate(-50%, -50%);
+	z-index: 99999;
+	background: radial-gradient(
+		circle,
+		transparent 0 28px,
+		rgba(255, 255, 255, 0.6) 29px,
+		rgba(255, 255, 255, 0.5) 32px,
+		rgba(255, 255, 255, 0.4) 35px,
+		rgba(255, 255, 255, 0.2) 38px,
+		transparent 40px
+	);
+}
+
 /* Companion Component */
 
 .Companion {
