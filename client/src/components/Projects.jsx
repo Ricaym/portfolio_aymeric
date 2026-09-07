@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
 	AlertTriangle,
 	BookOpen,
@@ -136,6 +136,8 @@ export default function Projects({ onBack }) {
 	const [search, setSearch] = useState("");
 	const [selectedLanguage, setSelectedLanguage] = useState("all");
 
+	const chevronRef = useRef(null);
+
 	useEffect(() => {
 		let isMounted = true;
 
@@ -168,6 +170,27 @@ export default function Projects({ onBack }) {
 
 		return () => {
 			isMounted = false;
+		};
+	}, []);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (!chevronRef.current) return;
+
+			const scrollY = window.scrollY;
+
+			const parallax = scrollY * 0.8;
+
+			chevronRef.current.style.transform =
+				`translateX(-50%) translateY(-${parallax}px)`;
+		};
+
+		window.addEventListener("scroll", handleScroll, {
+			passive: true,
+		});
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
 
@@ -278,8 +301,12 @@ export default function Projects({ onBack }) {
 		<div className="ProjectSection">
 			<header className="projectHeader">
 				<BackButton onBack={onBack} />
-				<h1 className="myselfTitle">My projects !</h1>
+				<h1 className="sectionTitle">My projects !</h1>
 			</header>
+
+			<div ref={chevronRef} className="scroll-chevron">
+				<span />
+			</div>
 
 			<main className="github-dashboard">
 				<section className="github-profile">

@@ -6,7 +6,7 @@ export default function Portfolio({ onBack }) {
 		<div className="MyselfSection">
 			<header className="myselfHeader">
 				<BackButton onBack={onBack} />
-				<h1 className="myselfTitle">About me !</h1>
+				<h1 className="sectionTitle">About me !</h1>
 			</header>
 
 			<div className="myselfCardContainer">
