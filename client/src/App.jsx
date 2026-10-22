@@ -185,7 +185,7 @@ function App() {
 
 		setTimeout(() => {
 			setStep(destination);
-		}, 2000);
+		}, 1);
 	};
 
 	const goBack = () => {
