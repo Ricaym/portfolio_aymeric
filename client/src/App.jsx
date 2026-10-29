@@ -1,12 +1,6 @@
-import {
-	useState,
-	useEffect,
-	useRef,
-} from "react";
-
+import { useState, useEffect, useRef } from "react";
 import music from "./assets/music.mp3";
 import clickSound from "./assets/click.mp3";
-
 import Gamemode from "./components/Gamemode";
 import StartScreen from "./components/StartScreen";
 import SectionSelection from "./components/SectionSelection";
@@ -15,9 +9,7 @@ import Projects from "./components/Projects";
 import Contacts from "./components/Contacts";
 import LoadingScreen from "./components/LoadingScreen";
 import EscapeMenu from "./components/EscapeMenu";
-
 import { useGamepadNavigation } from "../hooks/useGamepadNavigation";
-import { GamepadCursor } from "../hooks/GamepadCursor";
 import Cursor from "../hooks/Cursor";
 
 function App() {
@@ -35,14 +27,115 @@ function App() {
 			window.innerHeight > window.innerWidth
 		);
 
-	const [step, setStep] = useState(
-		window.innerHeight > window.innerWidth
-			? "start"
-			: "modeSelect"
-	);
+	const [step, setStep] = useState("start");
 
 	const [controlMode, setControlMode] =
 		useState("mouse");
+
+	const [cursorPosition, setCursorPosition] = useState({
+		x: window.innerWidth / 2,
+		y: window.innerHeight / 2,
+	});
+
+	const [cursorVisible, setCursorVisible] = useState(false);
+	const [isPointer, setIsPointer] = useState(false);
+
+	useEffect(() => {
+		let animationFrameId;
+		let previousMenuPressed = false;
+		let previousViewPressed = false;
+		let previousBPressed = false;
+
+		const handleMouseMove = (event) => {
+			if (!event.isTrusted) return;
+
+			setCursorPosition({
+				x: event.clientX,
+				y: event.clientY,
+			});
+
+			setCursorVisible(true);
+			setControlMode("mouse");
+		};
+
+		const checkGamepad = () => {
+        const gamepad = Array.from(
+            navigator.getGamepads?.() ?? []
+        ).find((pad) => pad?.connected);
+
+        // Bouton 8 : View (gauche)
+        const viewPressed =
+            gamepad?.buttons[8]?.pressed ?? false;
+
+        // Bouton 9 : Menu / Start (droite)
+        const menuPressed =
+            gamepad?.buttons[9]?.pressed ?? false;
+
+		// Bouton B : fermer le menu Échap
+		const bPressed =
+			gamepad?.buttons[1]?.pressed ?? false;
+
+		if (bPressed && !previousBPressed) {
+			setIsEscapeMenuOpen(false);
+		}
+
+        if (viewPressed && !previousViewPressed) {
+            setControlMode("gamepad");
+            setCursorVisible(true);
+        }
+
+        if (menuPressed && !previousMenuPressed) {
+            if (step !== "loading") {
+                setIsEscapeMenuOpen((prev) => !prev);
+            }
+        }
+
+        previousViewPressed = viewPressed;
+        previousMenuPressed = menuPressed;
+		previousBPressed = bPressed;
+
+        animationFrameId = requestAnimationFrame(checkGamepad);
+    };
+
+		window.addEventListener("mousemove", handleMouseMove);
+		animationFrameId =
+			requestAnimationFrame(checkGamepad);
+
+		return () => {
+			window.removeEventListener("mousemove", handleMouseMove);
+			cancelAnimationFrame(animationFrameId);
+		};
+	}, []);
+
+	useEffect(() => {
+		const element = document.elementFromPoint(
+			cursorPosition.x,
+			cursorPosition.y
+		);
+
+		setIsPointer(Boolean(element?.closest(
+			"a, button, input, select, textarea, [data-cursor-hover]"
+		)));
+	}, [cursorPosition, controlMode, step, isEscapeMenuOpen]);
+
+	useEffect(() => {
+		const hideCursor = () => setCursorVisible(false);
+
+		window.addEventListener("blur", hideCursor);
+
+		const handleMouseOut = (event) => {
+			if (!event.relatedTarget && controlMode === "mouse") {
+				hideCursor();
+			}
+		};
+
+		window.addEventListener("mouseout", handleMouseOut);
+
+		return () => {
+			window.removeEventListener("blur", hideCursor);
+			window.removeEventListener("mouseout", handleMouseOut);
+		};
+	}, [controlMode]);
 
 	const [selectedCharacter, setSelectedCharacter] =
 		useState(null);
@@ -164,8 +257,10 @@ function App() {
 		}
 	}, [step]);
 
-	const { cursor } = useGamepadNavigation(
-		controlMode === "gamepad"
+	useGamepadNavigation(
+		controlMode === "gamepad",
+		cursorPosition,
+		setCursorPosition
 	);
 
 	const showLoadingThen = (
@@ -257,16 +352,12 @@ function App() {
 				preload="auto"
 			/>
 
-			{controlMode === "mouse" &&
-				!isMobilePortrait && (
-					<Cursor />
-				)}
-
-			{controlMode === "gamepad" && (
-				<GamepadCursor
-					x={cursor.x}
-					y={cursor.y}
-					visible={!isEscapeMenuOpen}
+			{!isMobilePortrait && (
+				<Cursor
+					x={cursorPosition.x}
+					y={cursorPosition.y}
+					visible={cursorVisible}
+					isPointer={isPointer}
 				/>
 			)}
 
