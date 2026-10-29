@@ -1,7 +1,7 @@
 import Companion from "./Companion";
-import First from "/public/1.png";
-import Second from "/public/2.png";
-import Third from "/public/3.png";
+import First from "/public/1.jpg";
+import Second from "/public/2.jpg";
+import Third from "/public/3.jpg";
 
 import AnimatedNumber from "../../hooks/animations/AnimatedNumber";
 
@@ -11,19 +11,19 @@ export default function SectionSelection({ onSelect }) {
 			name: "About me",
 			image: First,
 			destination: "myself",
-			id: "28/06"
+			id: "2806"
 		},
 		{
 			name: "My projects",
 			image: Second,
 			destination: "projects",
-			id: "8/32"
+			id: "0832"
 		},
 		{
 			name: "Contact me",
 			image: Third,
 			destination: "contacts",
-			id: "+33"
+			id: "3306"
 		},
 	];
 
