@@ -18,7 +18,6 @@ import EscapeMenu from "./components/EscapeMenu";
 
 import { useGamepadNavigation } from "../hooks/useGamepadNavigation";
 import { GamepadCursor } from "../hooks/GamepadCursor";
-import Cursor from "../hooks/Cursor";
 
 function App() {
 	const audioRef = useRef(null);
@@ -256,11 +255,6 @@ function App() {
 				src={clickSound}
 				preload="auto"
 			/>
-
-			{controlMode === "mouse" &&
-				!isMobilePortrait && (
-					<Cursor />
-				)}
 
 			{controlMode === "gamepad" && (
 				<GamepadCursor
