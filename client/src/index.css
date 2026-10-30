@@ -1,7 +1,7 @@
 * {
 	color: white;
-	/* font-family: 'MaPolicePerso'; */
-	font-family: "JetBrains Mono", monospace;
+	font-family: 'MaPolicePerso';
+	/* font-family: "JetBrains Mono", monospace; */
 	cursor: none;
 }
 
@@ -51,7 +51,7 @@ html {
 }
 
 body {
-	background-image: url('./assets/StartScreen.jpg');
+	background-image: url('../public/characterSelection.jpg');
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: center;
@@ -914,10 +914,11 @@ textarea,
 .CharactersClass {
 	width: auto;
 	display: flex;
+	position: absolute;
 	flex-direction: column;
 	align-items: center;
 	gap: 40px;
-	margin-right: 200px;
+	right: 200px;
 	opacity: 1;
 	transform: translateX(100px);
 	animation: slideInLeft 0.8s ease forwards;
@@ -945,6 +946,7 @@ textarea,
 	box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
 	border: 0;
 	background: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .CharacterCard:hover, .CharacterCard.gamepad-hover {
@@ -952,38 +954,62 @@ textarea,
 	box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
 }
 
-.CharacterName {
-	color: white;
-	z-index: 2;
+.CharacterTitles {
 	display: flex;
-	position: relative;
-	align-items: start;
-	font-size: 25px;
-	padding: 10px 0 0 70px;
-	width: 100%;
+	flex-direction: column;
+	margin: 0 70px;
+	width: 200px;
 	height: 100%;
-	/* letter-spacing: 1px; */
-	text-shadow: 0 0 2px rgba(0, 0, 0, 0.9), 0 0 6px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5);
 }
 
-.CharacterImage {
-	position: absolute;
+.CharacterTitle {
+	display: flex;
+	align-items: end;
+	color: white;
+	z-index: 2;
+	font-size: 25px;
 	width: 100%;
-	height: 100px;
+	height: 100%;
+	/* text-shadow: 0 0 2px rgba(0, 0, 0, 0.9), 0 0 6px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5); */
 }
+
+.CharacterSubtitle {
+	display: flex;
+	align-items: start;
+	color: rgba(210, 210, 210, 1);
+	z-index: 2;
+	font-size: 15px;
+	width: 100%;
+	height: 100%;
+	/* text-shadow: 0 0 2px rgba(0, 0, 0, 0.9), 0 0 6px rgba(0, 0, 0, 0.9), 0 0 12px rgba(0, 0, 0, 0.9); */
+}
+
+/* .CharacterCard:nth-child(1) {
+	background-image: url(../public/1.jpg);
+	background-size: 110%;
+	background-position: center;
+}
+
+.CharacterCard:nth-child(2) {
+    background-image: url(../public/2.jpg);
+	background-size: 100%;
+	background-position: center;
+}
+
+.CharacterCard:nth-child(3) {
+    background-image: url(../public/3.jpg);
+	background-size: 100%;
+	background-position: center;
+} */
 
 .CharacterId {
 	display: flex;
 	position: absolute;
 	justify-content: center;
-	align-self: start;
+	align-self: center;
 	z-index: 0;
-	color: gold;
-	font-family: "JetBrains Mono", monospace;
 	font-size: 35px;
-	right: 10px;
-	font-weight: 300;
-	text-shadow: 0 0 2px rgba(255, 255, 255, 0.1), 0 0 6px rgba(255, 255, 255, 0.1), 0 0 12px rgba(255, 255, 255, 0.3); 
+	right: 20px;
 }
 
 /* Sections Pages */
@@ -1349,12 +1375,6 @@ textarea,
 		width: 300px;
 		height: 60px;
 		box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-	}
-
-	.CharacterImage {
-		position: absolute;
-		width: 100%;
-		height: 100%;
 	}
 
 	/* Portfolio */
