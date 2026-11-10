@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import music from "./assets/music.mp3";
 import clickSound from "./assets/click.mp3";
 import Gamemode from "./components/Gamemode";
 import StartScreen from "./components/StartScreen";
@@ -340,12 +339,6 @@ function App() {
 
 	return (
 		<>
-			<audio
-				ref={audioRef}
-				src={music}
-				loop
-			/>
-
 			<audio
 				ref={clickAudioRef}
 				src={clickSound}
