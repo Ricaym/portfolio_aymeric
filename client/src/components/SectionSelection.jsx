@@ -1,29 +1,25 @@
 import Companion from "./Companion";
-import First from "/public/1.png";
-import Second from "/public/2.png";
-import Third from "/public/3.png";
-
 import AnimatedNumber from "../../hooks/animations/AnimatedNumber";
 
 export default function SectionSelection({ onSelect }) {
 	const characters = [
 		{
-			name: "About me",
-			image: First,
+			title: "About me",
+			subtitle: "Aymeric Chassagne",
 			destination: "myself",
-			id: "28/06"
+			id: "2004"
 		},
 		{
-			name: "My projects",
-			image: Second,
+			title: "My projects",
+			subtitle: "Git Hub Projects",
 			destination: "projects",
-			id: "8/32"
+			id: "1040"
 		},
 		{
-			name: "Contact me",
-			image: Third,
+			title: "Contact me",
+			subtitle: "aymeric.chassagne@proton.me",
 			destination: "contacts",
-			id: "+33"
+			id: "3306"
 		},
 	];
 
@@ -33,9 +29,11 @@ export default function SectionSelection({ onSelect }) {
 
 			<div className="CharactersClass">
 				{characters.map((character) => (
-					<div key={character.name} className="CharacterCard" onClick={() => onSelect(character)} data-cursor-hover>
-						<p className="CharacterName">{character.name}</p>
-						<img className="CharacterImage" src={character.image} alt={character.name} />
+					<div key={character.title} className="CharacterCard" onClick={() => onSelect(character)} data-cursor-hover>
+						<div className="CharacterTitles">
+							<p className="CharacterTitle">{character.title}</p>
+							<p className="CharacterSubtitle">{character.subtitle}</p>
+						</div>
 						<AnimatedNumber value={character.id} duration={3500}/>
 					</div>
 				))}
