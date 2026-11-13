@@ -49,7 +49,12 @@ html {
 }
 
 body {
-	background-image: url('../public/characterSelection.jpg');
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+}
+
+.backgroundApp {
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: center;
