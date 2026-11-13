@@ -28,14 +28,27 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '24.11.1'
           cache: npm
           cache-dependency-path: client/package-lock.json
+
+      - name: Setup npm
+        run: npm install -g npm@11.6.2
 
       - name: Check Node and npm versions
         run: |
           node --version
           npm --version
+
+      - name: Check Node and npm versions
+        run: |
+          node --version
+          npm --version
+
+      - name: Check lockfile dependencies
+        working-directory: ./client
+        run: |
+          npm ls @emnapi/core @emnapi/runtime --package-lock-only --all
 
       - name: Install dependencies
         working-directory: ./client
