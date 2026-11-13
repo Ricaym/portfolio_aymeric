@@ -339,8 +339,6 @@ function App() {
 
 	return (
 		<>
-			<img className="backgroundApp" src={`${import.meta.env.BASE_URL}characterSelection.jpg`} />
-
 			<audio
 				ref={clickAudioRef}
 				src={clickSound}

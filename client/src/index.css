@@ -49,12 +49,14 @@ html {
 }
 
 body {
+	background-image: url(../public/backgroundApp.jpg);
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: center;
 }
 
 .backgroundApp {
+	z-index: 0;
 	background-attachment: fixed;
 	background-size: cover;
 	background-position: center;
