@@ -4,8 +4,35 @@ import profilePicture from "../assets/profile.png";
 import cv from "../assets/CV.pdf";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiFileText } from "react-icons/fi";
+import { useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function Portfolio({ onBack }) {
+
+
+	const [tooltipText, setTooltipText] = useState("");
+
+	const handleMouseMove = (e) => {
+		document.documentElement.style.setProperty(
+			"--tooltip-x",
+			`${e.clientX}px`
+		);
+
+		document.documentElement.style.setProperty(
+			"--tooltip-y",
+			`${e.clientY}px`
+		);
+	};
+
+	const handleMouseEnter = (e, text) => {
+		handleMouseMove(e);
+		setTooltipText(text);
+	};
+
+	const handleMouseLeave = () => {
+		setTooltipText("");
+	};
+
 	return (
 		<div className="MyselfSection">
 			<header className="myselfHeader">
@@ -54,6 +81,8 @@ export default function Portfolio({ onBack }) {
 							</div>
 						</div>
 
+
+
 						<div className="myselfLinks">
 							<a
 								href="https://github.com/Ricaym"
@@ -61,18 +90,22 @@ export default function Portfolio({ onBack }) {
 								rel="noopener noreferrer"
 								className="myselfLink"
 								aria-label="GitHub"
-								title="GitHub"
+								onMouseEnter={(e) => handleMouseEnter(e, "GitHub profile")}
+								onMouseMove={handleMouseMove}
+								onMouseLeave={handleMouseLeave}
 							>
 								<FaGithub />
 							</a>
 
 							<a
-								href="https://www.linkedin.com/in/aymeric-chassagne-a0383a170/"
+								href="https://www.linkedin.com/in/TON-PROFIL/"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="myselfLink"
 								aria-label="LinkedIn"
-								title="LinkedIn"
+								onMouseEnter={(e) => handleMouseEnter(e, "LinkedIn profile")}
+								onMouseMove={handleMouseMove}
+								onMouseLeave={handleMouseLeave}
 							>
 								<FaLinkedin />
 							</a>
@@ -82,12 +115,26 @@ export default function Portfolio({ onBack }) {
 								target="_blank"
 								rel="noopener noreferrer"
 								className="myselfLink"
-								aria-label="Voir mon CV"
-								title="Voir mon CV"
+								aria-label="View CV"
+								onMouseEnter={(e) => handleMouseEnter(e, "My resume")}
+								onMouseMove={handleMouseMove}
+								onMouseLeave={handleMouseLeave}
 							>
 								<FiFileText />
 							</a>
 						</div>
+
+						{createPortal(
+							<div
+								className={`myselfTooltip ${tooltipText ? "visible" : ""}`}
+								aria-hidden="true"
+							>
+								{tooltipText}
+							</div>,
+							document.body
+						)}
+
+
 					</div>
 
 				</div>

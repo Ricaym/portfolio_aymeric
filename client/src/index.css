@@ -1,9 +1,30 @@
 * {
-	font-family: 'MaPolicePerso';
-	/* font-family: "JetBrains Mono", monospace; */
+	font-family: 'JapanWaveFont';
+	cursor: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Police d'écriture */
+@font-face {
+	font-family: 'JapanWaveFont';
+	src: url('./fonts/japan-wave.ttf') format('opentype');
+}
+
+html {
+	height: 100%;
 	cursor: none;
 }
 
+body {
+	background-image: url(../public/backgroundApp.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+}
+
+/* Variables générales des couleurs */
 :root {
 	/* Couleurs principales de texte */
 	--primary: rgba(255, 255, 255, 1);
@@ -43,17 +64,7 @@
 	--Y: #f2c94c;
 }
 
-html {
-	height: 100%;
-	cursor: none;
-}
-
-body {
-	background-image: url(../public/backgroundApp.jpg);
-	background-attachment: fixed;
-	background-size: cover;
-	background-position: center;
-}
+/* CSS SITE #####################################################################################*/
 
 .backgroundApp {
 	z-index: 0;
@@ -74,14 +85,7 @@ select,
 	cursor: none !important;
 }
 
-/* Police d'écriture */
-
-@font-face {
-	font-family: 'MaPolicePerso';
-	src: url('./fonts/japan-wave.ttf') format('opentype');
-}
-
-/* LoadingScreen Component Page (From Uiverse.io by Nawsome) */
+/* LoadingScreen component (From Uiverse.io by Nawsome) */
 
 .LoadingScreen {
 	position: fixed;
@@ -122,8 +126,7 @@ select,
 	margin-bottom: 6px;
 }
 
-.banter-loader__box:nth-child(1):before,
-.banter-loader__box:nth-child(4):before {
+.banter-loader__box:nth-child(1):before, .banter-loader__box:nth-child(4):before {
 	margin-left: 26px;
 }
 
@@ -822,34 +825,16 @@ textarea,
 	opacity: 1;
 	transform: scale(1);
 }
+.A {color: greenyellow;}
+.Y {color: yellow;}
+.L {color: black;}
 
-.A {
-	color: greenyellow;
-}
 
-.Y {
-	color: yellow;
-}
-
-.L {
-	color: black;
-}
 
 /* StartScreen */
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
 .StartScreen {
 	position: fixed;
-	width: 100%;
-	height: 100%;
-}
-
-.overlay {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -858,18 +843,19 @@ textarea,
 	align-items: center;
 }
 
-.logoStartScreen {
+.startScreenLogo {
 	position: absolute;
 	top: calc(50% - 250px);
 	width: 200px;
 	height: 200px;
 }
 
-.title {
+.startScreenTitle {
+	color: var(--primary);
 	font-size: 70px;
 }
 
-.subtitle {
+.startScreenSubtitle {
 	bottom: 40px;
 	position: fixed;
 	color: white;
@@ -987,24 +973,6 @@ textarea,
 	width: 100%;
 	height: 100%;
 }
-
-/* .CharacterCard:nth-child(1) {
-	background-image: url(../public/1.jpg);
-	background-size: 110%;
-	background-position: center;
-}
-
-.CharacterCard:nth-child(2) {
-    background-image: url(../public/2.jpg);
-	background-size: 100%;
-	background-position: center;
-}
-
-.CharacterCard:nth-child(3) {
-    background-image: url(../public/3.jpg);
-	background-size: 100%;
-	background-position: center;
-} */
 
 .CharacterId {
 	display: flex;
@@ -1165,6 +1133,32 @@ textarea,
 	transform: scale(1.04);
 }
 
+/* Myself page links */
+
+.myselfTooltip {
+    position: fixed;
+    left: calc(var(--tooltip-x, 0px) + 28px);
+    top: calc(var(--tooltip-y, 0px) - 28px);
+    transform: translateY(-100%);
+    padding: 8px 12px;
+    background: var(--backgroundPrimary);
+	backdrop-filter: blur(5px);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    font-size: 25px;
+    font-weight: 500;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.myselfTooltip.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 768px) {
@@ -1282,292 +1276,6 @@ textarea,
 	-webkit-backdrop-filter: blur(5px);
 	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 	margin-left: 10px;
-}
-
-/* Paramètrages téléphone */
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-
-@media screen and (orientation: portrait) {
-
-	* {
-		cursor: default;
-	}
-
-	/* From Uiverse.io by Nawsome */
-	.banter-loader {
-		position: absolute;
-		left: calc(50%);
-		top: calc(30%);
-		width: 72px;
-		height: 72px;
-		margin-left: -36px;
-		margin-top: -36px;
-	}
-
-	/* StartScreen */
-
-	.StartScreen {
-		position: fixed;
-		width: 100%;
-		height: 100%;
-	}
-
-	.overlay {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.logoStartScreen {
-		position: absolute;
-		top: calc(50% - 250px);
-	}
-
-	.title {
-		font-size: 30px;
-	}
-
-	.subtitle {
-		bottom: 40px;
-		position: fixed;
-		color: white;
-		font-size: 25px;
-		opacity: 1;
-		animation: blink 2s infinite;
-	}
-
-	@keyframes blink {
-		0% {
-			opacity: 0;
-		}
-
-		50% {
-			opacity: 1;
-		}
-
-		100% {
-			opacity: 0;
-		}
-	}
-
-	/* CharacterSelection */
-
-	.CharactersSelection {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	/* Companion Phone Component */
-
-	.Companion {
-		z-index: 1;
-		display: flex;
-		position: relative;
-		width: 100%;
-		height: 80%;
-	}
-
-	.CharacterCard {
-		display: flex;
-		position: relative;
-		z-index: 5;
-		width: 300px;
-		height: 60px;
-		box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-	}
-
-	/* Portfolio */
-
-	.myselfCard {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 100%;
-		height: 600px;
-		gap: 10px;
-	}
-
-	.name_card {
-		font-size: 25px;
-		font-weight: bold;
-		margin: 0;
-		padding: 10px 20px;
-	}
-
-	.title_card {
-		font-size: 20px;
-		margin: 0;
-		padding: 0px 20px;
-	}
-
-	.profilePicture {
-		width: 90%;
-		height: 1200px;
-		align-self: left;
-		background-image: url(./assets/profile_picture.png);
-		background-repeat: no-repeat;
-		background-size: cover;
-		backdrop-filter: blur(5px);
-		-webkit-backdrop-filter: blur(5px);
-		border: none;
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-		margin: 0;
-	}
-
-	.description {
-		display: flex;
-		align-items: center;
-		width: 90%;
-		height: 500px;
-		backdrop-filter: blur(5px);
-		-webkit-backdrop-filter: blur(5px);
-		border: none;
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-		margin: 0;
-	}
-
-	.description p {
-		padding: 20px;
-	}
-
-	.phone {
-		display: none;
-	}
-
-	@keyframes spin {
-		to {
-			transform: rotate(360deg);
-		}
-	}
 }
 
 /* Buttons (Cross, Square, Triangle, Circle) */
@@ -2310,7 +2018,6 @@ textarea,
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 24px;
 	backdrop-filter: blur(18px);
 	-webkit-backdrop-filter: blur(18px);
 	animation: escapeOverlayAppear 180ms ease-out;
@@ -2319,28 +2026,22 @@ textarea,
 .escapeMenu {
 	width: min(520px, 100%);
 	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 255, 255, 0.14);
+	box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 0, 0, 0.5);
 	animation: escapeMenuAppear 200ms ease-out;
 }
 
 .escapeMenuHeader {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: space-between;
-	padding: 24px;
+	padding: 20px;
 	border-bottom: 1px solid var(--border-escape-menu);
 }
 
-.escapeMenuHeader h2 {
-	margin: 4px 0 0;
-	font-size: 2rem;
-}
-
 .escapeMenuLabel {
-	color: wheat;
-	font-size: 0.75rem;
-	font-weight: 700;
-	letter-spacing: 0.2em;
+	color: var(--primary);
+	font-size: 25px;
+	letter-spacing: 2px;
 }
 
 .escapeMenuClose {
@@ -2368,7 +2069,7 @@ textarea,
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	padding: 24px;
+	padding: 20px;
 }
 
 .escapeMenuAction {
@@ -2397,7 +2098,7 @@ textarea,
 
 .escapeMenuAction svg {
 	flex-shrink: 0;
-	color: cyan;
+	color: var(--third);
 }
 
 .escapeMenuAction span {
@@ -2439,7 +2140,7 @@ textarea,
 	gap: 10px;
 	min-height: 90px;
 	padding: 16px;
-	color: rgba(245, 222, 179, 0.8);
+	color: var(--third);
 	background: rgba(255, 255, 255, 0.02);
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	cursor: pointer;
@@ -2451,7 +2152,7 @@ textarea,
 }
 
 .escapeMenuMode:hover {
-	color: rgba(245, 222, 179, 0.8);
+	color: var(--third);
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	backdrop-filter: blur(5px);
 	-webkit-backdrop-filter: blur(5px);
@@ -2459,9 +2160,9 @@ textarea,
 }
 
 .escapeMenuMode.active {
-	color: rgba(245, 222, 179, 0.8);
+	color: var(--third);
 	background: rgba(245, 222, 179, 0.07);
-	border-color: rgba(245, 222, 179, 0.8);
+	border-color: var(--third);
 }
 
 .escapeMenuMode.active::after {
@@ -2471,23 +2172,8 @@ textarea,
 	right: 10px;
 	width: 8px;
 	height: 8px;
-	background: rgba(245, 222, 179, 1);
-	box-shadow: 0 0 10px rgba(245, 222, 179, 1);
-}
-
-.escapeMenuFooter {
-	padding: 18px 24px;
-	color: rgba(245, 222, 179, 0.8);
-	text-align: center;
-	font-size: 0.85rem;
-	border-top: 1px solid var(--border-escape-menu);
-}
-
-.escapeMenuFooter kbd {
-	padding: 3px 8px;
-	color: white;
-	background: var(--background-text);
-	border: 1px solid red;
+	background: var(--third);
+	box-shadow: 0 0 10px var(--third);
 }
 
 @keyframes escapeOverlayAppear {
@@ -2565,3 +2251,6 @@ textarea,
 	transform-origin: left center;
 	transform: rotate(40deg);
 }
+
+
+

@@ -31,11 +31,7 @@ export default function EscapeMenu({
 			>
 				<header className="escapeMenuHeader">
 					<div>
-						<span className="escapeMenuLabel">
-							PAUSE
-						</span>
-
-						<h2>Menu</h2>
+						<p className="escapeMenuLabel">MENU ECHAP</p>
 					</div>
 
 					<button
@@ -124,10 +120,6 @@ export default function EscapeMenu({
 						</div>
 					</div>
 				</div>
-
-				<footer className="escapeMenuFooter">
-					Appuie sur <kbd>Échap</kbd> pour fermer
-				</footer>
 			</div>
 		</div>
 	);
