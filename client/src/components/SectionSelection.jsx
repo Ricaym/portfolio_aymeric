@@ -1,5 +1,4 @@
 import Companion from "./Companion";
-import AnimatedNumber from "../../hooks/animations/AnimatedNumber";
 
 export default function SectionSelection({ onSelect }) {
 	const characters = [
@@ -34,7 +33,7 @@ export default function SectionSelection({ onSelect }) {
 							<p className="CharacterTitle">{character.title}</p>
 							<p className="CharacterSubtitle">{character.subtitle}</p>
 						</div>
-						<AnimatedNumber value={character.id} duration={3500}/>
+						<p className="CharacterNumber">{character.id}</p>
 					</div>
 				))}
 			</div>
