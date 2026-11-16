@@ -1,7 +1,7 @@
 import "../index.css";
 import BackButton from "./BackButton";
-import profilePicture from "../assets/profile.png";
-import cv from "../assets/CV.pdf";
+import profilePicture from "/public/profile.png";
+import cv from "/public/CV.pdf";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FiFileText } from "react-icons/fi";
 import { useState } from "react";

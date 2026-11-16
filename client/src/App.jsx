@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import clickSound from "./assets/click.mp3";
+import clickSound from "/public/click.mp3";
 import Gamemode from "./components/Gamemode";
 import StartScreen from "./components/StartScreen";
 import SectionSelection from "./components/SectionSelection";
