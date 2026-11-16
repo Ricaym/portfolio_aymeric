@@ -48,7 +48,7 @@ body {
 
 	/* Contours de div */
 	--boxShadow: rgba(0, 0, 0, 0.5);
-	--boxShadowHover: rgba(0, 0, 0, 0.2);
+	--boxShadowHover: rgba(0, 0, 0, 0.9);
 
 	/* États */
 	--success: #4ade80;
@@ -677,8 +677,7 @@ html, body, a, button, input, select, textarea, [data-cursor-hover] {
 	}
 }
 
-/* SectionSelection */
-
+/* Section Selection */
 .CharactersSelection {
 	position: fixed;
 	width: 100%;
@@ -727,24 +726,39 @@ html, body, a, button, input, select, textarea, [data-cursor-hover] {
 }
 
 .CharacterCard:nth-child(1) {
-	background-color: var(--backgroundSelectionFirst);
+	background-image: url(/public/bannerMyself.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .CharacterCard:nth-child(2) {
-	background-color: var(--backgroundSelectionSecond);
+	background-image: url(/public/bannerp.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 .CharacterCard:nth-child(3) {
-	background-color: var(--backgroundSelectionThird);
+	background-image: url(/public/bannerContact.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.sectionEmblem {
+	width: 80px;
+	height: 80px;
+	display: flex;
+	left: 20px;
+	align-self: center;
+	position: absolute;
 }
 
 .CharacterCard:hover, .CharacterCard.gamepad-hover {
 	transform: scale(1.05);
-	box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+	box-shadow: 0 0 30px var(--boxShadowHover);
 }
 
 .CharacterTitles {
 	display: flex;
 	flex-direction: column;
-	margin: 0 70px;
+	margin: 0 125px;
 	width: 200px;
 	height: 100%;
 }
@@ -752,7 +766,7 @@ html, body, a, button, input, select, textarea, [data-cursor-hover] {
 .CharacterTitle {
 	display: flex;
 	align-items: end;
-	color: white;
+	color: var(--primary);
 	z-index: 2;
 	font-size: 25px;
 	width: 100%;
@@ -778,7 +792,7 @@ html, body, a, button, input, select, textarea, [data-cursor-hover] {
 	color: white;
 	z-index: 2;
 	font-size: 40px;
-	width: 100%;
+	width: 100px;
 	height: 100%;
 }
 
@@ -810,13 +824,14 @@ html, body, a, button, input, select, textarea, [data-cursor-hover] {
 }
 
 .myselfHeader {
-	background-color: var(--backgroundSelectionFirst);
+	background-image: url(/public/bannerMyself.jpg);
 }
 .projectHeader {
-	background-color: var(--backgroundSelectionSecond);
+	background-image: url(/public/bannerp.jpg);
 }
 .contactHeader {
-	background-color: var(--backgroundSelectionThird);
+	background-image: url(/public/bannerContact.jpg);
+	background-position-y: -65px;
 }
 
 @keyframes slideDown {
