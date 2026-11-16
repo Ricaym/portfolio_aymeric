@@ -1,7 +1,7 @@
 import Companion from "./Companion";
-import Myself from "../../public/emblemMyself.png"
-import Projects from "../../public/emblemp.png"
-import Contact from "../../public/emblemc.png"
+import Myself from "/emblemMyself.png"
+import Projects from "/emblemProjects.png"
+import Contact from "/emblemContact.png"
 
 export default function SectionSelection({ onSelect }) {
 	const characters = [

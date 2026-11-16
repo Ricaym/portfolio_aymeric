@@ -725,18 +725,19 @@ html, body, a, button, input, select, textarea, [data-cursor-hover] {
 	backdrop-filter: blur(10px);
 }
 
+/* Bannières de Sélection de page*/
 .CharacterCard:nth-child(1) {
-	background-image: url(/public/bannerMyself.jpg);
+	background-image: url(/bannerMyself.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .CharacterCard:nth-child(2) {
-	background-image: url(/public/bannerp.jpg);
+	background-image: url(/bannerProjects.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .CharacterCard:nth-child(3) {
-	background-image: url(/public/bannerContact.jpg);
+	background-image: url(/bannerContact.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -824,13 +825,13 @@ html, body, a, button, input, select, textarea, [data-cursor-hover] {
 }
 
 .myselfHeader {
-	background-image: url(/public/bannerMyself.jpg);
+	background-image: url(/bannerMyself.jpg);
 }
 .projectHeader {
-	background-image: url(/public/bannerp.jpg);
+	background-image: url(/bannerProjects.jpg);
 }
 .contactHeader {
-	background-image: url(/public/bannerContact.jpg);
+	background-image: url(/bannerContact.jpg);
 	background-position-y: -65px;
 }
 
