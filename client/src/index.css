@@ -951,12 +951,13 @@ html, body, a, button, input, select, textarea, [data-cursor-hover] {
 	text-decoration: none;
 	font-size: 25px;
 	font-weight: 500;
-	transition: all 0.25s ease;
+	/* transition: all 0.25s ease; */
 }
 
 .myselfLink:hover {
 	border-color: var(--borderHover);
-	transform: scale(1.04);
+	backdrop-filter: blur(10px);
+	/* transform: scale(1.04); */
 }
 
 /* Myself page links */
