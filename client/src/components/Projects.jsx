@@ -301,12 +301,12 @@ export default function Projects({ onBack }) {
 		<div className="ProjectSection">
 			<header className="projectHeader">
 				<BackButton onBack={onBack} />
-				<h1 className="sectionTitle">My projects !</h1>
+				<h1 className="headerTitle">My projects !</h1>
 			</header>
 
-			<div ref={chevronRef} className="scroll-chevron">
+			{/* <div ref={chevronRef} className="scroll-chevron">
 				<span />
-			</div>
+			</div> */}
 
 			<main className="github-dashboard">
 				<section className="github-profile">

@@ -37,7 +37,7 @@ export default function Portfolio({ onBack }) {
 		<div className="MyselfSection">
 			<header className="myselfHeader">
 				<BackButton onBack={onBack} />
-				<h1 className="sectionTitle">About me !</h1>
+				<h1 className="headerTitle">About me !</h1>
 			</header>
 
 			<div className="myselfPage">
@@ -98,7 +98,7 @@ export default function Portfolio({ onBack }) {
 							</a>
 
 							<a
-								href="https://www.linkedin.com/in/TON-PROFIL/"
+								href="https://www.linkedin.com/in/aymeric-chassagne-a0383a170/"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="myselfLink"
