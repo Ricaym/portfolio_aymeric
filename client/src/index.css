@@ -45,6 +45,7 @@ body {
 	/* Bordures de div */
 	--border: rgba(255, 255, 255, 0.3);
 	--borderHover: rgba(255, 255, 255, 0.5);
+	--borderThird: rgba(240, 220, 180, 0.7);
 
 	/* Contours de div */
 	--boxShadow: rgba(0, 0, 0, 0.5);
@@ -1009,7 +1010,7 @@ textarea,
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 75vh;
+	min-height: 105vh;
 	padding: 40px 24px;
 }
 
@@ -1098,19 +1099,19 @@ textarea,
 	align-items: center;
 	justify-content: center;
 	padding: 12px 20px;
-	border: 1px solid var(--border);
-	border-radius: 8px;
 	color: var(--primary);
+	background: var(--backgroundPrimary);
+	border: 1px solid var(--border);
 	text-decoration: none;
 	font-size: 25px;
 	font-weight: 500;
-	/* transition: all 0.25s ease; */
+	transition: all 0.25s ease;
 }
 
 .myselfLink:hover {
 	border-color: var(--borderHover);
 	backdrop-filter: blur(10px);
-	/* transform: scale(1.04); */
+	box-shadow: 0 8px 25px var(--boxShadow);
 }
 
 /* Myself page links */
@@ -1239,12 +1240,12 @@ textarea,
 	--github-surface-hover: rgba(255, 255, 255, 0.085);
 	--github-muted: rgba(255, 255, 255, 0.65);
 	width: min(1200px, calc(100% - 32px));
-	margin: 740px auto;
-	color: white;
+	margin: 200px 0;
+	color: var(--primary);
 }
 
 .github-dashboard a {
-	color: inherit;
+	color: var(--secondary);
 	text-decoration: none;
 }
 
@@ -1252,8 +1253,8 @@ textarea,
 .github-panel,
 .github-repository-card,
 .github-stat-card {
-	border: 1px solid var(--github-border);
-	background: var(--github-surface);
+	border: 1px solid var(--border);
+	background: var(--backgroundPrimary);
 	backdrop-filter: blur(14px);
 }
 
@@ -1293,7 +1294,7 @@ textarea,
 }
 
 .github-profile-title>div>a {
-	color: var(--github-cyan);
+	color: var(--third);
 }
 
 .github-section-label {
@@ -1313,20 +1314,20 @@ textarea,
 	align-items: center;
 	flex-shrink: 0;
 	padding: 11px 16px;
-	border: 1px solid var(--github-cyan);
-	color: var(--github-cyan) !important;
+	border: 1px solid var(--border);
+	color: var(--secondary) !important;
 	transition: transform 180ms ease, background 180ms ease;
 }
 
 .github-main-link:hover {
 	transform: translateY(-2px);
-	background: rgba(0, 217, 255, 0.1);
+	background: var(--primary);
 }
 
 .github-bio {
 	max-width: 750px;
 	margin: 20px 0;
-	color: var(--github-muted);
+	color: var(--secondary);
 	font-size: 1rem;
 	line-height: 1.7;
 }
@@ -1335,7 +1336,7 @@ textarea,
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px 22px;
-	color: var(--github-muted);
+	color: var(--primary);
 }
 
 .github-profile-details span,
@@ -1346,7 +1347,7 @@ textarea,
 }
 
 .github-profile-details a:hover {
-	color: var(--github-cyan);
+	color: var(--secondary);
 }
 
 .github-stat-grid {
